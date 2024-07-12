@@ -1,0 +1,29 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="shortcut icon" href="#" type="image/x-icon"><meta name="viewport" content="width=device-width"><link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css"><title>TILs</title><style>body{font-size:1rem}article[data-astro-cid-ruefk3sg] h1[data-astro-cid-ruefk3sg]{font-size:1.25rem}article[data-astro-cid-ruefk3sg] header[data-astro-cid-ruefk3sg]{font-size:14px;display:flex;gap:1rem}
+</style></head> <body>  <header data-astro-cid-ruefk3sg> <h1 data-astro-cid-ruefk3sg>TILs</h1> </header> <main data-astro-cid-ruefk3sg> <article data-astro-cid-ruefk3sg> <header data-astro-cid-ruefk3sg> <time datetime="" data-astro-cid-ruefk3sg>2024-07-12</time> <span data-astro-cid-ruefk3sg>#astro</span> </header> <h1 data-astro-cid-ruefk3sg> <a href="#astro-render-markdown-to-html" data-astro-cid-ruefk3sg>astro render markdown to html</a> </h1> <p>1）
+src/pages/example.astro</p>
+<pre><code class="language-astro">---
+// Using &quot;marked&quot; (https://github.com/markedjs/marked)
+import { marked } from &#39;marked&#39;;
+const markdown = &quot;# heading 1&quot;
+const content = marked.parse(markdown);
+---
+&lt;article set:html={content} /&gt;
+</code></pre>
+<ol>
+<li>将 Markdown 解析为 HTML。</li>
+<li>给元素设置 innerHTML。</li>
+</ol>
+<p>source: <a href="https://docs.astro.build/en/guides/markdown-content/#fetching-remote-markdown">https://docs.astro.build/en/guides/markdown-content/#fetching-remote-markdown</a></p>
+<p>2）
+如果你不想将 HTML 直接设置在某个元素上，则可以设置在 Astro 内置的 <code>Fragment</code> 组件上：</p>
+<p>src/pages/example.astro</p>
+<pre><code class="language-astro">---
+// Using &quot;marked&quot; (https://github.com/markedjs/marked)
+import { marked } from &#39;marked&#39;;
+const markdown = &quot;# heading 1&quot;
+const content = marked.parse(markdown);
+---
+&lt;Fragment set:html={content} /&gt;
+</code></pre>
+<p>source: <a href="https://docs.astro.build/en/basics/astro-syntax/#fragments">https://docs.astro.build/en/basics/astro-syntax/#fragments</a></p>
+ </article> </main>  </body></html> 
