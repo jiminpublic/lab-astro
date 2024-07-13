@@ -1,10 +1,10 @@
 <!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="shortcut icon" href="#" type="image/x-icon"><meta name="viewport" content="width=device-width"><link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css"><title>TILs</title><style>body{font-size:1rem}article[data-astro-cid-ruefk3sg] h1[data-astro-cid-ruefk3sg]{font-size:1.25rem}article[data-astro-cid-ruefk3sg] header[data-astro-cid-ruefk3sg]{font-size:14px;display:flex;gap:1rem}
-</style></head> <body>  <header data-astro-cid-ruefk3sg> <h1 data-astro-cid-ruefk3sg>TILs</h1> </header> <main data-astro-cid-ruefk3sg> <article data-astro-cid-ruefk3sg> <header data-astro-cid-ruefk3sg> <time datetime="" data-astro-cid-ruefk3sg>2024-07-12</time> <span data-astro-cid-ruefk3sg>#astro</span> </header> <h1 data-astro-cid-ruefk3sg> <a href="#astro-render-markdown-to-html" data-astro-cid-ruefk3sg>astro render markdown to html</a> </h1> <p>1）
+</style></head> <body>  <header data-astro-cid-ruefk3sg> <h1 data-astro-cid-ruefk3sg>TILs</h1> </header> <main data-astro-cid-ruefk3sg> <article data-astro-cid-ruefk3sg> <header data-astro-cid-ruefk3sg> <time datetime="" data-astro-cid-ruefk3sg>2024-07-12</time> <span data-astro-cid-ruefk3sg>#astro</span> </header> <h1 data-astro-cid-ruefk3sg> <a href="#astro-render-markdown-to-html" data-astro-cid-ruefk3sg>Astro render markdown to html</a> </h1> <p>1）
 src/pages/example.astro</p>
 <pre><code class="language-astro">---
-// Using &quot;marked&quot; (https://github.com/markedjs/marked)
+// Using &quot;marked&quot; to parse markdown to html (https://github.com/markedjs/marked)
 import { marked } from &#39;marked&#39;;
-const markdown = &quot;# heading 1&quot;
+const markdown = &quot;# heading 1&quot;;
 const content = marked.parse(markdown);
 ---
 &lt;article set:html={content} /&gt;
@@ -26,4 +26,48 @@ const content = marked.parse(markdown);
 &lt;Fragment set:html={content} /&gt;
 </code></pre>
 <p>source: <a href="https://docs.astro.build/en/basics/astro-syntax/#fragments">https://docs.astro.build/en/basics/astro-syntax/#fragments</a></p>
+ </article><article data-astro-cid-ruefk3sg> <header data-astro-cid-ruefk3sg> <time datetime="" data-astro-cid-ruefk3sg>2024-07-12</time> <span data-astro-cid-ruefk3sg>#javascript</span> </header> <h1 data-astro-cid-ruefk3sg> <a href="#java-script-slugify-a-string" data-astro-cid-ruefk3sg>JavaScript slugify a string</a> </h1> <p>Using <code>@sindresorhus/slugify</code> to slugify a string in JavaScript:</p>
+<pre><code class="language-js">import slugify from &#39;@sindresorhus/slugify&#39;;
+
+slugify(&#39;BAR and baz&#39;);
+//=&gt; &#39;bar-and-baz&#39;
+</code></pre>
+<p>source: <a href="https://github.com/sindresorhus/slugify">https://github.com/sindresorhus/slugify</a></p>
+ </article><article data-astro-cid-ruefk3sg> <header data-astro-cid-ruefk3sg> <time datetime="" data-astro-cid-ruefk3sg>2024-07-12</time> <span data-astro-cid-ruefk3sg>#javascript</span><span data-astro-cid-ruefk3sg>#</span> </header> <h1 data-astro-cid-ruefk3sg> <a href="#java-script-check-whether-or-not-a-pattern-exists-in-a-searched-string" data-astro-cid-ruefk3sg>JavaScript check whether or not a pattern exists in a searched string</a> </h1> <p>To do this, we can use the <code>test()</code> method of <code>RegExp</code> instances.</p>
+<p>Example #1 - Check if there are hashtags in the given string:</p>
+<pre><code class="language-js">const result = /#[a-z]/.test(&quot;hello #world&quot;)
+
+console.log(result); // true
+</code></pre>
+<p>Example #2 - Check if &quot;hello&quot; is contained at the very beginning of a string:</p>
+<pre><code class="language-js">const str = &quot;hello world!&quot;;
+const result = /^hello/.test(str);
+
+console.log(result); // true
+</code></pre>
+<p>source: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test</a></p>
+ </article><article data-astro-cid-ruefk3sg> <header data-astro-cid-ruefk3sg> <time datetime="" data-astro-cid-ruefk3sg>2024-07-12</time> <span data-astro-cid-ruefk3sg>#javascript</span><span data-astro-cid-ruefk3sg>#</span> </header> <h1 data-astro-cid-ruefk3sg> <a href="#java-script-removes-elements-from-an-array" data-astro-cid-ruefk3sg>JavaScript removes elements from an array</a> </h1> <p>To do this, we can use the <code>splice()</code> method of <code>Array</code> instances.</p>
+<p>Example #1 - Remove 1 element at index 3:</p>
+<pre><code class="language-js">const myFish = [&quot;angel&quot;, &quot;clown&quot;, &quot;drum&quot;, &quot;mandarin&quot;, &quot;sturgeon&quot;];
+const removed = myFish.splice(3, 1);
+
+// myFish is [&quot;angel&quot;, &quot;clown&quot;, &quot;drum&quot;, &quot;sturgeon&quot;]
+// removed is [&quot;mandarin&quot;]
+</code></pre>
+<p>Example #2 - Remove 2 elements, starting from index 2:</p>
+<pre><code class="language-js">const myFish = [&quot;parrot&quot;, &quot;anemone&quot;, &quot;blue&quot;, &quot;trumpet&quot;, &quot;sturgeon&quot;];
+const removed = myFish.splice(2, 2);
+
+// myFish is [&quot;parrot&quot;, &quot;anemone&quot;, &quot;sturgeon&quot;]
+// removed is [&quot;blue&quot;, &quot;trumpet&quot;]
+</code></pre>
+<p>source: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice</a></p>
+ </article><article data-astro-cid-ruefk3sg> <header data-astro-cid-ruefk3sg> <time datetime="" data-astro-cid-ruefk3sg>2024-07-04</time>  </header> <h1 data-astro-cid-ruefk3sg> <a href="#git-reset-last-commit" data-astro-cid-ruefk3sg>Git reset last commit</a> </h1> <p>1）要撤销上一次提交的更改，可以使用以下 Git 命令：</p>
+<pre><code class="language-bash">git reset --soft HEAD~1
+</code></pre>
+<p>这个命令会将 <code>HEAD</code> 移动到上一次的 commit，回退到 changes staged 的时候。</p>
+<p>2）如果你想要完全撤销最后一次提交的更改，可以使用 <code>--hard</code> 参数：</p>
+<pre><code class="language-bash">git reset --hard HEAD~1
+</code></pre>
+<p>这会将 <code>HEAD</code> 移动到上一次的 commit，并会丢弃工作目录中的所有更改。也就是说，回退到了上一次 commit 时的状态。</p>
  </article> </main>  </body></html> 
