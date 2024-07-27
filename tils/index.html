@@ -1,0 +1,871 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="shortcut icon" href="#" type="image/x-icon"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>TILs | Made with Astro</title><style>*,*:before,*:after{box-sizing:border-box}*{margin:0}body{line-height:1.5;-webkit-font-smoothing:antialiased}img,picture,video,canvas,svg{display:block;max-width:100%}input,button,textarea,select{font:inherit}p,h1,h2,h3,h4,h5,h6{overflow-wrap:break-word}#root,#__next{isolation:isolate}body{max-width:100%;overflow-x:hidden}:root{--bg-color: white;--text-primary: #444;--text-secondary: #757575;--text-accent: #21759b;--border-color: #ededed;--link-hover-color: #0f3647}body{font-size:16px;font-family:system-ui,sans-serif}header,main{max-width:620px;margin:auto;padding:0 1rem}header{text-align:center;padding:2rem}main{margin-top:1rem;margin-bottom:1rem}article{padding-top:1rem;color:var(--text-primary);font-size:15px;&:not(:is(:first-child,:last-child)){margin:5rem 0}h1,h2,h3,p,ul,ol,.code-block__wrapper{margin-bottom:1.5rem}p,ul,ol{line-height:24px}li:not(:last-child){margin-bottom:.25rem}h1{font-size:20px;margin-bottom:1.5rem}h2{font-size:15px}h1 a{text-decoration:none}a{color:var(--text-accent);&:hover{color:var(--link-hover-color)}}p:has(+:is(ul,ol)){margin-bottom:.25rem}ul,ol{padding-left:1.5rem}li:has(:is(ul,ol)) :is(ul,ol){margin-bottom:0}footer{font-size:13px;color:var(--text-secondary);display:flex;gap:1rem}}.code-block__wrapper{border-radius:8px}.code-block__header{padding:.5rem 1rem;border-radius:8px 8px 0 0;border-bottom:1px solid #555;background-color:#1e1e1e;color:#d4d4d4be;font-size:14px}.code-block__wrapper pre{padding:1rem;border-radius:0 0 8px 8px;margin-top:0;overflow:auto}code:not([class]){background-color:#f6f7f8;border-radius:2px;padding:0 4px}
+</style></head> <body>  <header> <h1>TILs</h1> <p>There are 26 TILs.</p> </header> <main> <article id="2024-07-26T0800"> <h1> <a href="#2024-07-26T0800">Astro - `public` dir</a> </h1> <p>你可以在 <code>public/</code> 目录中存放不需要在 Astro 打包过程中处理的文件和资源。</p>
+<p>Astro 会将这个目录下的内容拷贝到打包目录中。注意，并不是连带 <code>public/</code> 目录本身拷贝到打包目录中。</p>
+<h2>举个例子：</h2>
+<p>源码：</p>
+
+    <div class="code-block__wrapper language-txt">
+      <div class="code-block__header">
+        <span class="lang">txt</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-txt"><span class="line"><span>- public/</span></span>
+<span class="line"><span>	- img/</span></span>
+<span class="line"><span>		- img-01.png</span></span>
+<span class="line"><span>	- favicon.svg</span></span>
+<span class="line"><span>	- robots.txt</span></span>
+<span class="line"><span>- src/</span></span>
+<span class="line"><span>	- ...</span></span>
+<span class="line"><span>- ...</span></span></code></pre>
+
+    </div><p>打包后：</p>
+
+    <div class="code-block__wrapper language-txt">
+      <div class="code-block__header">
+        <span class="lang">txt</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-txt"><span class="line"><span>- dist/</span></span>
+<span class="line"><span>	- img/</span></span>
+<span class="line"><span>		- img-01.png</span></span>
+<span class="line"><span>	- favicon.svg</span></span>
+<span class="line"><span>	- robots.txt</span></span>
+<span class="line"><span>	- index.html</span></span>
+<span class="line"><span>	- ...</span></span></code></pre>
+
+    </div><h2>Source:</h2>
+<p><a href="https://docs.astro.build/en/basics/project-structure/#public" target="_blank">https://docs.astro.build/en/basics/project-structure/#public</a></p>
+<ul>
+<li><code>public/</code> 目录用于存放不需要在 Astro 打包过程中处理的文件和资源。该文件夹中的文件将<strong>原封不动地拷贝到打包目录中</strong>，然后再打包您的站点。</li>
+</ul>
+ <footer> <time datetime="">2024-07-26</time> <span>#astro</span> </footer> </article><article id="2024-07-26T0810"> <h1> <a href="#2024-07-26T0810">Node.js - 读取自定义环境变量</a> </h1> <p>方法：使用 <a href="https://github.com/motdotla/dotenv" target="_blank">https://github.com/motdotla/dotenv</a></p>
+<p>安装：</p>
+
+    <div class="code-block__wrapper language-bash">
+      <div class="code-block__header">
+        <span class="lang">bash</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-bash"><span class="line"><span style="color:#DCDCAA">npm</span><span style="color:#CE9178"> i</span><span style="color:#569CD6"> -D</span><span style="color:#CE9178"> dotenv</span></span></code></pre>
+
+    </div><h2>定义环境变量</h2>
+<p>Create a <code>.env</code> file in the root of your project.</p>
+<p>For example:</p>
+
+    <div class="code-block__wrapper language-env">
+      <div class="code-block__header">
+        <span class="code-block__filename">.env</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-txt"><span class="line"><span>TOKEN="12341234"</span></span></code></pre>
+
+    </div><h2>读取环境变量</h2>
+<p>以 ES modules 为例：</p>
+
+    <div class="code-block__wrapper language-js">
+      <div class="code-block__header">
+        <span class="lang">js</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-js"><span class="line"><span style="color:#6A9955">// As early as possible in your application, import and configure dotenv</span></span>
+<span class="line"><span style="color:#C586C0">import</span><span style="color:#CE9178"> 'dotenv/config'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A9955">// Now, `process.env` has the keys and values you defined in your .env file.</span></span>
+<span class="line"><span style="color:#9CDCFE">console</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">log</span><span style="color:#D4D4D4">(</span><span style="color:#9CDCFE">process</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">env</span><span style="color:#D4D4D4">.</span><span style="color:#4FC1FF">TOKEN</span><span style="color:#D4D4D4">);</span></span></code></pre>
+
+    </div> <footer> <time datetime="">2024-07-26</time> <span>#nodejs</span> </footer> </article><article id="2024-07-26T0820"> <h1> <a href="#2024-07-26T0820">JavaScript - Capture screenshots of websites </a> </h1> <p>方法：</p>
+<p>使用 <a href="https://github.com/sindresorhus/capture-website" target="_blank">https://github.com/sindresorhus/capture-website</a></p>
+<p>安装：</p>
+
+    <div class="code-block__wrapper language-bash">
+      <div class="code-block__header">
+        <span class="lang">bash</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-bash"><span class="line"><span style="color:#DCDCAA">npm</span><span style="color:#CE9178"> i</span><span style="color:#CE9178"> capture-website</span></span></code></pre>
+
+    </div><p>用法：</p>
+
+    <div class="code-block__wrapper language-js">
+      <div class="code-block__header">
+        <span class="lang">js</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-js"><span class="line"><span style="color:#C586C0">import</span><span style="color:#9CDCFE"> captureWebsite</span><span style="color:#C586C0"> from</span><span style="color:#CE9178"> "capture-website"</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C586C0">await</span><span style="color:#9CDCFE"> captureWebsite</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">file</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">"https://www.example.com/"</span><span style="color:#D4D4D4">, </span><span style="color:#CE9178">"example.png"</span><span style="color:#D4D4D4">);</span></span></code></pre>
+
+    </div><p>Here, we take a screenshot for <a href="https://www.example.com/" target="_blank">https://www.example.com/</a> , and save it to <code>example.png</code> file.</p>
+ <footer> <time datetime="">2024-07-26</time> <span>#javascript</span> </footer> </article><article id="2024-07-25T0810"> <h1> <a href="#2024-07-25T0810">Astro - Cache Data Requests</a> </h1> <h2>Source</h2>
+<p><a href="https://duffn.dev/caching-astro-fetch-requests/" target="_blank">https://duffn.dev/caching-astro-fetch-requests/</a></p>
+<p>If you're looking to cache your requests to avoid hitting that API too frequently when developing locally, just use <code>eleventy-fetch</code>. Yes, even with Astro!</p>
+<p>1）Add <code>eleventy-fetch</code> as a dependency</p>
+
+    <div class="code-block__wrapper language-bash">
+      <div class="code-block__header">
+        <span class="lang">bash</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-bash"><span class="line"><span style="color:#DCDCAA">npm</span><span style="color:#CE9178"> i</span><span style="color:#CE9178"> @11ty/eleventy-fetch</span></span></code></pre>
+
+    </div><p>2）Declare the package as a module in the <code>env.d.ts</code> file generated by Astro, since <code>eleventy-fetch</code> is not written in TypeScript by adding the line below to the end of the file.</p>
+
+    <div class="code-block__wrapper language-ts">
+      <div class="code-block__header">
+        <span class="lang">ts</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#569CD6">declare</span><span style="color:#569CD6"> module</span><span style="color:#CE9178"> "@11ty/eleventy-fetch"</span><span style="color:#D4D4D4">;</span></span></code></pre>
+
+    </div><p>3）Now, just use <code>eleventy-fetch</code> wherever you'd normally use <code>fetch</code>! The below will cache the responses on disk in a <code>.cache</code> directory for 1 hour. You'll see the <code>.cache</code> directory populate with some files that hold the responses to your API requests.</p>
+
+    <div class="code-block__wrapper language-js">
+      <div class="code-block__header">
+        <span class="lang">js</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-js"><span class="line"><span style="color:#C586C0">import</span><span style="color:#9CDCFE"> EleventyFetch</span><span style="color:#C586C0"> from</span><span style="color:#CE9178"> "@11ty/eleventy-fetch"</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> results</span><span style="color:#D4D4D4"> = </span><span style="color:#C586C0">await</span><span style="color:#DCDCAA"> EleventyFetch</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">`https://example.com/api`</span><span style="color:#D4D4D4">, {</span></span>
+<span class="line"><span style="color:#9CDCFE">	duration:</span><span style="color:#CE9178"> "1h"</span><span style="color:#D4D4D4">,</span></span>
+<span class="line"><span style="color:#9CDCFE">	type:</span><span style="color:#CE9178"> "json"</span><span style="color:#D4D4D4">,</span></span>
+<span class="line"><span style="color:#D4D4D4">});</span></span></code></pre>
+
+    </div><p>4）Ensure that you add the <code>.cache</code> directory to your <code>.gitignore</code>!</p>
+<h2>Source</h2>
+<p><a href="https://github.com/11ty/eleventy-fetch" target="_blank">https://github.com/11ty/eleventy-fetch</a></p>
+<p>Fetch network resources and cache them so you don’t bombard your API (or other resources). (bombard / 轰炸)</p>
+<p>This plugin can save any kind of asset—JSON, HTML, images, videos, etc.</p>
+ <footer> <time datetime="">2024-07-25</time> <span>#astro</span> </footer> </article><article id="2024-07-25T0820"> <h1> <a href="#2024-07-25T0820">Web  API - URL API</a> </h1> 
+    <div class="code-block__wrapper language-js">
+      <div class="code-block__header">
+        <span class="lang">js</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-js"><span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> url</span><span style="color:#D4D4D4"> = </span><span style="color:#569CD6">new</span><span style="color:#DCDCAA"> URL</span><span style="color:#D4D4D4">(</span><span style="color:#9CDCFE">window</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">location</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">href</span><span style="color:#D4D4D4">);</span></span></code></pre>
+
+    </div><h2>Example 01</h2>
+<p>If <code>window.location.href</code> is:</p>
+
+    <div class="code-block__wrapper language-txt">
+      <div class="code-block__header">
+        <span class="lang">txt</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-txt"><span class="line"><span>http://localhost:4321/open-source-personal-sites?tech=Nextjs</span></span></code></pre>
+
+    </div><p>... will return:</p>
+
+    <div class="code-block__wrapper language-js">
+      <div class="code-block__header">
+        <span class="lang">js</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-js"><span class="line"><span style="color:#C8C8C8">hash</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">""</span></span>
+<span class="line"><span style="color:#D4D4D4">​</span></span>
+<span class="line"><span style="color:#C8C8C8">host</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">"localhost:4321"</span></span>
+<span class="line"><span style="color:#D4D4D4">​</span></span>
+<span class="line"><span style="color:#C8C8C8">hostname</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">"localhost"</span></span>
+<span class="line"><span style="color:#D4D4D4">​</span></span>
+<span class="line"><span style="color:#C8C8C8">href</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">"http://localhost:4321/open-source-personal-sites?tech=Nextjs"</span></span>
+<span class="line"><span style="color:#D4D4D4">​</span></span>
+<span class="line"><span style="color:#C8C8C8">origin</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">"http://localhost:4321"</span></span>
+<span class="line"><span style="color:#D4D4D4">​</span></span>
+<span class="line"><span style="color:#C8C8C8">password</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">""</span></span>
+<span class="line"><span style="color:#D4D4D4">​</span></span>
+<span class="line"><span style="color:#C8C8C8">pathname</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">"/open-source-personal-sites"</span></span>
+<span class="line"><span style="color:#D4D4D4">​</span></span>
+<span class="line"><span style="color:#C8C8C8">port</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">"4321"</span></span>
+<span class="line"><span style="color:#D4D4D4">​</span></span>
+<span class="line"><span style="color:#C8C8C8">protocol</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">"http:"</span></span>
+<span class="line"><span style="color:#D4D4D4">​</span></span>
+<span class="line"><span style="color:#C8C8C8">search</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">"?tech=Nextjs"</span></span>
+<span class="line"><span style="color:#D4D4D4">​</span></span>
+<span class="line"><span style="color:#C8C8C8">searchParams</span><span style="color:#D4D4D4">: </span><span style="color:#9CDCFE">URLSearchParams</span><span style="color:#D4D4D4"> { </span><span style="color:#9CDCFE">tech</span><span style="color:#D4D4D4"> → </span><span style="color:#CE9178">"Nextjs"</span><span style="color:#D4D4D4"> }</span></span>
+<span class="line"><span style="color:#D4D4D4">​</span></span>
+<span class="line"><span style="color:#C8C8C8">username</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">""</span></span></code></pre>
+
+    </div><h2>Example 02</h2>
+<p>If <code>window.location.href</code> is:</p>
+
+    <div class="code-block__wrapper language-txt">
+      <div class="code-block__header">
+        <span class="lang">txt</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-txt"><span class="line"><span>http://localhost:4321/open-source-personal-sites</span></span></code></pre>
+
+    </div><p>... will return:</p>
+
+    <div class="code-block__wrapper language-js">
+      <div class="code-block__header">
+        <span class="lang">js</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-js"><span class="line"><span style="color:#C8C8C8">hash</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">""</span></span>
+<span class="line"><span style="color:#D4D4D4">​</span></span>
+<span class="line"><span style="color:#C8C8C8">host</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">"localhost:4321"</span></span>
+<span class="line"><span style="color:#D4D4D4">​</span></span>
+<span class="line"><span style="color:#C8C8C8">hostname</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">"localhost"</span></span>
+<span class="line"><span style="color:#D4D4D4">​</span></span>
+<span class="line"><span style="color:#C8C8C8">href</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">"http://localhost:4321/open-source-personal-sites"</span></span>
+<span class="line"><span style="color:#D4D4D4">​</span></span>
+<span class="line"><span style="color:#C8C8C8">origin</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">"http://localhost:4321"</span></span>
+<span class="line"><span style="color:#D4D4D4">​</span></span>
+<span class="line"><span style="color:#C8C8C8">password</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">""</span></span>
+<span class="line"><span style="color:#D4D4D4">​</span></span>
+<span class="line"><span style="color:#C8C8C8">pathname</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">"/open-source-personal-sites"</span></span>
+<span class="line"><span style="color:#D4D4D4">​</span></span>
+<span class="line"><span style="color:#C8C8C8">port</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">"4321"</span></span>
+<span class="line"><span style="color:#D4D4D4">​</span></span>
+<span class="line"><span style="color:#C8C8C8">protocol</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">"http:"</span></span>
+<span class="line"><span style="color:#D4D4D4">​</span></span>
+<span class="line"><span style="color:#C8C8C8">search</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">""</span></span>
+<span class="line"><span style="color:#D4D4D4">​</span></span>
+<span class="line"><span style="color:#C8C8C8">searchParams</span><span style="color:#D4D4D4">: </span><span style="color:#DCDCAA">URLSearchParams</span><span style="color:#D4D4D4">(</span><span style="color:#B5CEA8">0</span><span style="color:#D4D4D4">)</span></span>
+<span class="line"><span style="color:#D4D4D4">​</span></span>
+<span class="line"><span style="color:#C8C8C8">username</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">""</span></span></code></pre>
+
+    </div> <footer> <time datetime="">2024-07-25</time> <span>#webapi</span> </footer> </article><article id="2024-07-25T0830"> <h1> <a href="#2024-07-25T0830">Web API - DOM - `DOMContentLoaded` event</a> </h1> <h2>Source</h2>
+<p>ChatGPT:</p>
+<p>Here are some key points about the <code>DOMContentLoaded</code> event:</p>
+<ul>
+<li><strong>Timing</strong>:
+<ul>
+<li>It fires after the HTML is completely loaded and parsed, without waiting for stylesheets, images, and subframes to finish loading.</li>
+<li>It signifies that the initial HTML document structure (the DOM ) is ready and can be manipulated safely with JavaScript.</li>
+</ul>
+</li>
+<li><strong>Use Case</strong>:
+<ul>
+<li>It is commonly used to execute JavaScript code that manipulates or interacts with the DOM.</li>
+</ul>
+</li>
+<li><strong>Alternative to <code>load</code> event</strong>:
+<ul>
+<li>Unlike the <code>load</code> event, which waits for all resources (images, stylesheets, etc.) to be loaded, <code>DOMContentLoaded</code> fires as soon as the initial HTML document is ready.</li>
+</ul>
+</li>
+</ul>
+ <footer> <time datetime="">2024-07-25</time> <span>#webapi</span> </footer> </article><article id="2024-07-24T0800"> <h1> <a href="#2024-07-24T0800">11ty - Fetch data, Provide data, Consume data</a> </h1> <h2>Example 01</h2>
+<p>Let use the Random User Generator API to fetch an random user and render it.</p>
+<p>1）Fetch and provide data:</p>
+
+    <div class="code-block__wrapper language-js">
+      <div class="code-block__header">
+        <span class="code-block__filename">src/pages/subdir/subdir.11tydata.js</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-js"><span class="line"><span style="color:#569CD6">async</span><span style="color:#569CD6"> function</span><span style="color:#DCDCAA"> fetchRandomUser</span><span style="color:#D4D4D4">() {</span></span>
+<span class="line"><span style="color:#569CD6">  const</span><span style="color:#4FC1FF"> response</span><span style="color:#D4D4D4"> = </span><span style="color:#C586C0">await</span><span style="color:#DCDCAA"> fetch</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">"https://randomuser.me/api/"</span><span style="color:#D4D4D4">);</span></span>
+<span class="line"><span style="color:#569CD6">  const</span><span style="color:#4FC1FF"> data</span><span style="color:#D4D4D4"> = </span><span style="color:#C586C0">await</span><span style="color:#9CDCFE"> response</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">json</span><span style="color:#D4D4D4">();</span></span>
+<span class="line"><span style="color:#569CD6">  const</span><span style="color:#4FC1FF"> randomUser</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">data</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">results</span><span style="color:#D4D4D4">[</span><span style="color:#B5CEA8">0</span><span style="color:#D4D4D4">];</span></span>
+<span class="line"><span style="color:#C586C0">  return</span><span style="color:#9CDCFE"> randomUser</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#D4D4D4">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#4EC9B0">module</span><span style="color:#D4D4D4">.</span><span style="color:#4EC9B0">exports</span><span style="color:#D4D4D4"> = </span><span style="color:#569CD6">async</span><span style="color:#D4D4D4"> () </span><span style="color:#569CD6">=></span><span style="color:#D4D4D4"> {</span></span>
+<span class="line"><span style="color:#569CD6">  const</span><span style="color:#4FC1FF"> randomUser</span><span style="color:#D4D4D4"> = </span><span style="color:#C586C0">await</span><span style="color:#DCDCAA"> fetchRandomUser</span><span style="color:#D4D4D4">();</span></span>
+<span class="line"><span style="color:#C586C0">  return</span><span style="color:#D4D4D4"> { </span><span style="color:#9CDCFE">randomUser</span><span style="color:#D4D4D4"> };</span></span>
+<span class="line"><span style="color:#D4D4D4">};</span></span></code></pre>
+
+    </div><p>2）Consume data:</p>
+
+    <div class="code-block__wrapper language-html">
+      <div class="code-block__header">
+        <span class="code-block__filename">src/pages/subdir/index.njk</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-html"><span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">h1</span><span style="color:#808080">></span><span style="color:#D4D4D4">User</span><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">h1</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">div</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">  &#x3C;</span><span style="color:#569CD6">span</span><span style="color:#808080">></span><span style="color:#D4D4D4">{{ randomUser.name.first }}</span><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">span</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">  &#x3C;</span><span style="color:#569CD6">span</span><span style="color:#808080">></span><span style="color:#D4D4D4">{{ randomUser.name.last }}</span><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">span</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">div</span><span style="color:#808080">></span></span></code></pre>
+
+    </div><h2>Example 02</h2>
+<p>Let use the Airtable API.</p>
+<p>1）Fetch and provide data:</p>
+
+    <div class="code-block__wrapper language-js">
+      <div class="code-block__header">
+        <span class="code-block__filename">src/pages/subdir/subdir.11tydata.js</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-js"><span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> EleventyFetch</span><span style="color:#D4D4D4"> = </span><span style="color:#DCDCAA">require</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">"@11ty/eleventy-fetch"</span><span style="color:#D4D4D4">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> AIRTABLE_BASE_URL</span><span style="color:#D4D4D4"> = </span><span style="color:#CE9178">"https://api.airtable.com/v0"</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> AIRTABLE_BASE_ID</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">process</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">env</span><span style="color:#D4D4D4">.</span><span style="color:#4FC1FF">AIRTABLE_BASE_ID</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> AIRTABLE_TABLE_ID</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">process</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">env</span><span style="color:#D4D4D4">.</span><span style="color:#4FC1FF">AIRTABLE_TABLE_ID</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> AIRTABLE_TOKEN</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">process</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">env</span><span style="color:#D4D4D4">.</span><span style="color:#4FC1FF">AIRTABLE_TOKEN</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> url</span><span style="color:#D4D4D4"> = </span><span style="color:#CE9178">`</span><span style="color:#569CD6">${</span><span style="color:#4FC1FF">AIRTABLE_BASE_URL</span><span style="color:#569CD6">}</span><span style="color:#CE9178">/</span><span style="color:#569CD6">${</span><span style="color:#4FC1FF">AIRTABLE_BASE_ID</span><span style="color:#569CD6">}</span><span style="color:#CE9178">/</span><span style="color:#569CD6">${</span><span style="color:#4FC1FF">AIRTABLE_TABLE_ID</span><span style="color:#569CD6">}</span><span style="color:#CE9178">`</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#569CD6">async</span><span style="color:#569CD6"> function</span><span style="color:#DCDCAA"> fetchAllRecordsFromAnAirtableTable</span><span style="color:#D4D4D4">() {</span></span>
+<span class="line"><span style="color:#569CD6">  const</span><span style="color:#4FC1FF"> result</span><span style="color:#D4D4D4"> = </span><span style="color:#C586C0">await</span><span style="color:#DCDCAA"> EleventyFetch</span><span style="color:#D4D4D4">(</span><span style="color:#9CDCFE">url</span><span style="color:#D4D4D4">, {</span></span>
+<span class="line"><span style="color:#9CDCFE">    duration:</span><span style="color:#CE9178"> "1d"</span><span style="color:#D4D4D4">,</span></span>
+<span class="line"><span style="color:#9CDCFE">    type:</span><span style="color:#CE9178"> "json"</span><span style="color:#D4D4D4">,</span></span>
+<span class="line"><span style="color:#9CDCFE">    fetchOptions:</span><span style="color:#D4D4D4"> {</span></span>
+<span class="line"><span style="color:#9CDCFE">      headers:</span><span style="color:#D4D4D4"> {</span></span>
+<span class="line"><span style="color:#9CDCFE">        Authorization:</span><span style="color:#CE9178"> `Bearer </span><span style="color:#569CD6">${</span><span style="color:#4FC1FF">AIRTABLE_TOKEN</span><span style="color:#569CD6">}</span><span style="color:#CE9178">`</span><span style="color:#D4D4D4">,</span></span>
+<span class="line"><span style="color:#D4D4D4">      },</span></span>
+<span class="line"><span style="color:#D4D4D4">    },</span></span>
+<span class="line"><span style="color:#D4D4D4">  });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C586C0">  return</span><span style="color:#9CDCFE"> result</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">records</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#D4D4D4">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#4EC9B0">module</span><span style="color:#D4D4D4">.</span><span style="color:#4EC9B0">exports</span><span style="color:#D4D4D4"> = </span><span style="color:#569CD6">async</span><span style="color:#D4D4D4"> () </span><span style="color:#569CD6">=></span><span style="color:#D4D4D4"> {</span></span>
+<span class="line"><span style="color:#569CD6">  const</span><span style="color:#4FC1FF"> records</span><span style="color:#D4D4D4"> = </span><span style="color:#C586C0">await</span><span style="color:#DCDCAA"> fetchAllRecordsFromAnAirtableTable</span><span style="color:#D4D4D4">();</span></span>
+<span class="line"><span style="color:#C586C0">  return</span><span style="color:#D4D4D4"> { </span><span style="color:#9CDCFE">records</span><span style="color:#D4D4D4"> };</span></span>
+<span class="line"><span style="color:#D4D4D4">};</span></span></code></pre>
+
+    </div><p>2）Consume data:</p>
+
+    <div class="code-block__wrapper language-html">
+      <div class="code-block__header">
+        <span class="code-block__filename">src/pages/subdir/index.njk</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-html"><span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">h1</span><span style="color:#808080">></span><span style="color:#D4D4D4">Records</span><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">h1</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">ul</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#D4D4D4">  {% for record in records %}</span></span>
+<span class="line"><span style="color:#808080">    &#x3C;</span><span style="color:#569CD6">li</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#D4D4D4">      {# ... #}</span></span>
+<span class="line"><span style="color:#808080">    &#x3C;/</span><span style="color:#569CD6">li</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#D4D4D4">  {% endfor %}</span></span>
+<span class="line"><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">ul</span><span style="color:#808080">></span></span></code></pre>
+
+    </div><h2>Source</h2>
+<p><a href="https://randomuser.me/" target="_blank">https://randomuser.me/</a></p>
+<ul>
+<li>Random User Generator API - A free, open-source API for generating random user data.</li>
+</ul>
+<p><a href="https://www.11ty.dev/docs/data-template-dir/" target="_blank">https://www.11ty.dev/docs/data-template-dir/</a></p>
+<ul>
+<li>While you can provide <a href="https://www.11ty.dev/docs/data-global/" target="_blank">global data files</a> to supply data to all of your templates, you may want some of your data to <strong>be available locally only to one specific template or to a directory of templates</strong>.</li>
+</ul>
+<p><a href="https://www.11ty.dev/docs/data-js/" target="_blank">https://www.11ty.dev/docs/data-js/</a></p>
+<ul>
+<li>JavaScript Data Files</li>
+</ul>
+<p><a href="https://www.11ty.dev/docs/quicktips/cache-api-requests/" target="_blank">https://www.11ty.dev/docs/quicktips/cache-api-requests/</a></p>
+<ul>
+<li>if you’re working on your site locally, you probably don’t want every Eleventy build to make a request to an external API call.</li>
+</ul>
+<p><a href="https://www.11ty.dev/docs/plugins/fetch/" target="_blank">https://www.11ty.dev/docs/plugins/fetch/</a></p>
+<ul>
+<li><code>@11ty/eleventy-fetch</code> plugin</li>
+</ul>
+ <footer> <time datetime="">2024-07-24</time> <span>#11ty</span> </footer> </article><article id="2024-07-24T0810"> <h1> <a href="#2024-07-24T0810">Nunjucks - if, if else</a> </h1> <h2>Example 01 - if</h2>
+
+    <div class="code-block__wrapper language-html">
+      <div class="code-block__header">
+        <span class="lang">html</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-html"><span class="line"><span style="color:#D4D4D4">---</span></span>
+<span class="line"><span style="color:#D4D4D4">age: 28</span></span>
+<span class="line"><span style="color:#D4D4D4">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D4D4D4">{% if age >= 18 %}</span></span>
+<span class="line"><span style="color:#808080">	&#x3C;</span><span style="color:#569CD6">p</span><span style="color:#808080">></span><span style="color:#D4D4D4">你是成年人。</span><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">p</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#D4D4D4">{% endif %}</span></span></code></pre>
+
+    </div><h2>Example 02 - if else</h2>
+
+    <div class="code-block__wrapper language-html">
+      <div class="code-block__header">
+        <span class="lang">html</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-html"><span class="line"><span style="color:#D4D4D4">---</span></span>
+<span class="line"><span style="color:#D4D4D4">age: 28</span></span>
+<span class="line"><span style="color:#D4D4D4">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D4D4D4">{% if age >= 18 %}</span></span>
+<span class="line"><span style="color:#808080">  &#x3C;</span><span style="color:#569CD6">p</span><span style="color:#808080">></span><span style="color:#D4D4D4">你是成年人。</span><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">p</span><span style="color:#808080">></span><span style="color:#D4D4D4"> </span></span>
+<span class="line"><span style="color:#D4D4D4">{% else %}</span></span>
+<span class="line"><span style="color:#808080">  &#x3C;</span><span style="color:#569CD6">p</span><span style="color:#808080">></span><span style="color:#D4D4D4">你不是成年人。</span><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">p</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#D4D4D4">{% endif %}</span></span></code></pre>
+
+    </div><h2>Source</h2>
+<p><a href="https://mozilla.github.io/nunjucks/templating.html#if" target="_blank">https://mozilla.github.io/nunjucks/templating.html#if</a></p>
+ <footer> <time datetime="">2024-07-24</time> <span>#nunjucks</span> </footer> </article><article id="2024-07-23T0800"> <h1> <a href="#2024-07-23T0800">Astro - styles do not work with `set:html`</a> </h1> <h2>Problem:</h2>
+<p>举个例子：</p>
+
+    <div class="code-block__wrapper language-astro">
+      <div class="code-block__header">
+        <span class="code-block__filename">src/pages/somepage.astro</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-astro"><span class="line"><span style="color:#6A9955">---</span></span>
+<span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> html</span><span style="color:#D4D4D4"> = </span><span style="color:#CE9178">'&#x3C;p>Hello world.&#x3C;/p>'</span></span>
+<span class="line"><span style="color:#6A9955">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#4EC9B0">Fragment</span><span style="color:#9CDCFE"> set:html</span><span style="color:#D4D4D4">=</span><span style="color:#569CD6">{</span><span style="color:#9CDCFE">html</span><span style="color:#569CD6">}</span><span style="color:#808080"> /></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">style</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#D7BA7D">  p</span><span style="color:#D4D4D4"> {</span></span>
+<span class="line"><span style="color:#9CDCFE">    color</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">red</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#D4D4D4">  }</span></span>
+<span class="line"><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">style</span><span style="color:#808080">></span></span></code></pre>
+
+    </div><p>当我像上面这样做时，在 <code>&lt;style&gt;</code> 里写的样式并没有应用到 <code>&lt;Fragment /&gt;</code> 内部的元素。</p>
+<h2>Why:</h2>
+<p>这是因为 Astro 根据你写的样式生成的样式是这样的：</p>
+
+    <div class="code-block__wrapper language-css">
+      <div class="code-block__header">
+        <span class="lang">css</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-css"><span class="line"><span style="color:#D7BA7D">p</span><span style="color:#D4D4D4">[</span><span style="color:#9CDCFE">data-astro-cid-xxxxxxxx</span><span style="color:#D4D4D4">] {</span></span>
+<span class="line"><span style="color:#9CDCFE">	color</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">red</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#D4D4D4">}</span></span></code></pre>
+
+    </div><p>而对于通过 <code>set:html</code> 的方式添加的每个元素，Astro 没有给它们添加 <code>data-astro-cid-xxxx=&quot;&quot;</code> 之类的属性，所以上面这个选择器自然无法作用到 <code>p</code>。</p>
+<h2>Solution:</h2>
+<p>To fix this problem, you can opt-out of automatic CSS scoping with the <code>&lt;style is:global&gt;</code> attribute.</p>
+
+    <div class="code-block__wrapper language-astro">
+      <div class="code-block__header">
+        <span class="code-block__filename">src/pages/somepage.astro</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-astro"><span class="line"><span style="color:#6A9955">---</span></span>
+<span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> html</span><span style="color:#D4D4D4"> = </span><span style="color:#CE9178">'&#x3C;p>Hello world.&#x3C;/p>'</span></span>
+<span class="line"><span style="color:#6A9955">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#4EC9B0">Fragment</span><span style="color:#9CDCFE"> set:html</span><span style="color:#D4D4D4">=</span><span style="color:#569CD6">{</span><span style="color:#9CDCFE">html</span><span style="color:#569CD6">}</span><span style="color:#808080"> /></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">style</span><span style="color:#9CDCFE"> is:global</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#6A9955">  /* Unscoped, delivered as-is to the browser.</span></span>
+<span class="line"><span style="color:#6A9955">     Applies to all &#x3C;p> tags on your site. */</span></span>
+<span class="line"><span style="color:#D7BA7D">  p</span><span style="color:#D4D4D4"> {</span></span>
+<span class="line"><span style="color:#9CDCFE">    color</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">red</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#D4D4D4">  }</span></span>
+<span class="line"><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">style</span><span style="color:#808080">></span></span></code></pre>
+
+    </div><h2>Source:</h2>
+<p><a href="https://docs.astro.build/en/guides/styling/#global-styles" target="_blank">https://docs.astro.build/en/guides/styling/#global-styles</a></p>
+<ul>
+<li>You can opt-out of automatic CSS scoping with the <code>&lt;style is:global&gt;</code> attribute.</li>
+</ul>
+ <footer> <time datetime="">2024-07-23</time> <span>#astro</span> </footer> </article><article id="2024-07-23T0810"> <h1> <a href="#2024-07-23T0810">Astro - fetch remote data</a> </h1> <h2>Source:</h2>
+<p><a href="https://docs.astro.build/en/guides/data-fetching/" target="_blank">https://docs.astro.build/en/guides/data-fetching/</a></p>
+<ul>
+<li>Remember, all data in Astro components is <strong>fetched when a component is rendered</strong>.</li>
+<li>In dev, you will see data <strong>fetches on component refreshes</strong>.</li>
+</ul>
+ <footer> <time datetime="">2024-07-23</time> <span>#astro</span> </footer> </article><article id="2024-07-23T0820"> <h1> <a href="#2024-07-23T0820">Astro - Add interactivity to your Astro components</a> </h1> <h2>Example:</h2>
+
+    <div class="code-block__wrapper language-astro">
+      <div class="code-block__header">
+        <span class="code-block__filename">src/components/Hello.astro</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-astro"><span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">h1</span><span style="color:#808080">></span><span style="color:#D4D4D4">Welcome, world!</span><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">h1</span><span style="color:#808080">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">script</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#9CDCFE">  console</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">log</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">'Welcome, browser console!'</span><span style="color:#D4D4D4">);</span></span>
+<span class="line"><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">script</span><span style="color:#808080">></span></span></code></pre>
+
+    </div><h2>Source:</h2>
+<p><a href="https://docs.astro.build/en/guides/client-side-scripts/" target="_blank">https://docs.astro.build/en/guides/client-side-scripts/</a></p>
+<ul>
+<li>In <code>.astro</code> files, you can add client-side JavaScript by adding one (or more) <code>&lt;script&gt;</code> tags.</li>
+<li>This allows you to send JavaScript to run in the browser and add functionality to your Astro components.</li>
+</ul>
+ <footer> <time datetime="">2024-07-23</time> <span>#astro</span> </footer> </article><article id="2024-07-23T0830"> <h1> <a href="#2024-07-23T0830">Airtable API</a> </h1> <h2>Auth</h2>
+<p>前往 <a href="https://airtable.com/create/tokens" target="_blank">https://airtable.com/create/tokens</a> 创建密钥，比如 Personal access token。</p>
+<h2>List records in a table</h2>
+<p>接口：</p>
+
+    <div class="code-block__wrapper language-txt">
+      <div class="code-block__header">
+        <span class="lang">txt</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-txt"><span class="line"><span>https://api.airtable.com/v0/{baseId}/{tableIdOrName}</span></span></code></pre>
+
+    </div><p>示例：</p>
+
+    <div class="code-block__wrapper language-js">
+      <div class="code-block__header">
+        <span class="lang">js</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-js"><span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> TOKEN</span><span style="color:#D4D4D4"> = </span><span style="color:#CE9178">"..."</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> BASE_ID</span><span style="color:#D4D4D4"> = </span><span style="color:#CE9178">"..."</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> TABLE_ID</span><span style="color:#D4D4D4"> = </span><span style="color:#CE9178">"..."</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> BASE_URL</span><span style="color:#D4D4D4"> = </span><span style="color:#CE9178">"https://api.airtable.com/v0"</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> url</span><span style="color:#D4D4D4"> = </span><span style="color:#CE9178">`</span><span style="color:#569CD6">${</span><span style="color:#4FC1FF">BASE_URL</span><span style="color:#569CD6">}</span><span style="color:#CE9178">/</span><span style="color:#569CD6">${</span><span style="color:#4FC1FF">BASE_ID</span><span style="color:#569CD6">}</span><span style="color:#CE9178">/</span><span style="color:#569CD6">${</span><span style="color:#4FC1FF">TABLE_ID</span><span style="color:#569CD6">}</span><span style="color:#CE9178">`</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#569CD6">async</span><span style="color:#569CD6"> function</span><span style="color:#DCDCAA"> fetchAllRecordsFromAnAirtableTable</span><span style="color:#D4D4D4">() {</span></span>
+<span class="line"><span style="color:#569CD6">  const</span><span style="color:#4FC1FF"> response</span><span style="color:#D4D4D4"> = </span><span style="color:#C586C0">await</span><span style="color:#DCDCAA"> fetch</span><span style="color:#D4D4D4">(</span><span style="color:#9CDCFE">url</span><span style="color:#D4D4D4">, {</span></span>
+<span class="line"><span style="color:#9CDCFE">    headers:</span><span style="color:#D4D4D4"> {</span></span>
+<span class="line"><span style="color:#9CDCFE">      Authorization:</span><span style="color:#CE9178"> `Bearer </span><span style="color:#569CD6">${</span><span style="color:#4FC1FF">AIRTABLE_TOKEN</span><span style="color:#569CD6">}</span><span style="color:#CE9178">`</span><span style="color:#D4D4D4">,</span></span>
+<span class="line"><span style="color:#D4D4D4">    },</span></span>
+<span class="line"><span style="color:#D4D4D4">  });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#569CD6">  const</span><span style="color:#4FC1FF"> result</span><span style="color:#D4D4D4"> = </span><span style="color:#C586C0">await</span><span style="color:#9CDCFE"> response</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">json</span><span style="color:#D4D4D4">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C586C0">  return</span><span style="color:#9CDCFE"> result</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">records</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#D4D4D4">}</span></span></code></pre>
+
+    </div><h2>Source</h2>
+<p><a href="https://airtable.com/developers/web/guides/personal-access-tokens" target="_blank">https://airtable.com/developers/web/guides/personal-access-tokens</a></p>
+<ul>
+<li>Create Personal access token</li>
+</ul>
+ <footer> <time datetime="">2024-07-23</time> <span>#airtable</span> </footer> </article><article id="2024-07-22T0800"> <h1> <a href="#2024-07-22T0800">Git Ignoring Tracked Files</a> </h1> <p>假设你的项目里有一个 <code>src/somedir</code> 目录，这个目录 were previously tracked by Git。现在你想让 Git 不再 track 这个目录了，你可以使用这个命令：</p>
+
+    <div class="code-block__wrapper language-bash">
+      <div class="code-block__header">
+        <span class="lang">bash</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-bash"><span class="line"><span style="color:#DCDCAA">git</span><span style="color:#CE9178"> rm</span><span style="color:#569CD6"> --cached</span><span style="color:#569CD6"> -r</span><span style="color:#CE9178"> src/somedir/</span></span></code></pre>
+
+    </div><ul>
+<li><code>git rm</code>: This is the Git command used to remove files from the index (also known as the staging area) and the working directory.</li>
+<li><code>--cached</code>: This option tells Git to only remove the specified files or directories from the index, without touching the actual files in the working directory.</li>
+<li><code>-r</code>: This option tells Git to recursively removes the directory and its contents from Git's index.</li>
+</ul>
+<p>完成上面这步后，再将 <code>src/somedir/</code> 加到 <code>.gitignore</code> 里就大功告成了。</p>
+<p>source: ChatGPT</p>
+ <footer> <time datetime="">2024-07-22</time> <span>#git</span> </footer> </article><article id="2024-07-22T0810"> <h1> <a href="#2024-07-22T0810">11ty - get the raw file content of collection items</a> </h1> <h2>Example:</h2>
+
+    <div class="code-block__wrapper language-js">
+      <div class="code-block__header">
+        <span class="code-block__filename">.elevent.js</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-js"><span class="line"><span style="color:#4EC9B0">module</span><span style="color:#D4D4D4">.</span><span style="color:#4EC9B0">exports</span><span style="color:#D4D4D4"> = </span><span style="color:#569CD6">function</span><span style="color:#D4D4D4"> (</span><span style="color:#9CDCFE">eleventyConfig</span><span style="color:#D4D4D4">) {</span></span>
+<span class="line"><span style="color:#9CDCFE">  eleventyConfig</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">addCollection</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">"posts"</span><span style="color:#D4D4D4">, </span><span style="color:#569CD6">function</span><span style="color:#D4D4D4"> (</span><span style="color:#9CDCFE">collectionApi</span><span style="color:#D4D4D4">) {</span></span>
+<span class="line"><span style="color:#C586C0">    return</span><span style="color:#9CDCFE"> collectionApi</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">getFilteredByGlob</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">"src/posts/*.md"</span><span style="color:#D4D4D4">).</span><span style="color:#DCDCAA">map</span><span style="color:#D4D4D4">((</span><span style="color:#9CDCFE">item</span><span style="color:#D4D4D4">) </span><span style="color:#569CD6">=></span><span style="color:#D4D4D4"> {</span></span>
+<span class="line"><span style="color:#569CD6">      const</span><span style="color:#4FC1FF"> rawMarkdown</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">item</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">template</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">frontMatter</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">content</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#569CD6">      const</span><span style="color:#D4D4D4"> { </span><span style="color:#4FC1FF">tags</span><span style="color:#D4D4D4"> } = </span><span style="color:#DCDCAA">markdownToPostData</span><span style="color:#D4D4D4">(</span><span style="color:#9CDCFE">rawMarkdown</span><span style="color:#D4D4D4">);</span></span>
+<span class="line"><span style="color:#9CDCFE">      item</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">data</span><span style="color:#D4D4D4"> = { </span><span style="color:#9CDCFE">tags</span><span style="color:#D4D4D4"> };</span></span>
+<span class="line"><span style="color:#C586C0">      return</span><span style="color:#9CDCFE"> item</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#D4D4D4">    });</span></span>
+<span class="line"><span style="color:#D4D4D4">  });</span></span>
+<span class="line"><span style="color:#6A9955">  // ...</span></span>
+<span class="line"><span style="color:#D4D4D4">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#569CD6">function</span><span style="color:#DCDCAA"> markdownToPostData</span><span style="color:#D4D4D4">(</span><span style="color:#9CDCFE">rawMarkdown</span><span style="color:#D4D4D4">) {</span></span>
+<span class="line"><span style="color:#6A9955">	// ...</span></span>
+<span class="line"><span style="color:#D4D4D4">}</span></span></code></pre>
+
+    </div><h2>Source:</h2>
+<p><a href="https://github.com/11ty/eleventy/issues/1206#issuecomment-718226128" target="_blank">https://github.com/11ty/eleventy/issues/1206#issuecomment-718226128</a></p>
+<ul>
+<li>Note that in the <code>map()</code> we’re appending it to the item’s <code>data</code> object as <code>rawMarkdown</code>.</li>
+<li><code>item.data.rawMarkdown = item.template.frontMatter.content || &quot;&quot;;</code></li>
+</ul>
+<p><a href="https://github.com/11ty/eleventy/issues/1206#issuecomment-718250941" target="_blank">https://github.com/11ty/eleventy/issues/1206#issuecomment-718250941</a></p>
+<ul>
+<li>using <code>item.template.frontMatter.content</code> in a collection, to extract hashtags as tags:</li>
+<li><code>let tags = hashtagsToTags(note.template.frontMatter.content);</code></li>
+</ul>
+ <footer> <time datetime="">2024-07-22</time> <span>#11ty</span> </footer> </article><article id="2024-07-22T0820"> <h1> <a href="#2024-07-22T0820">11ty - addPassthroughCopy()</a> </h1> <h2>Example:</h2>
+
+    <div class="code-block__wrapper language-js">
+      <div class="code-block__header">
+        <span class="code-block__filename">.elevent.js</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-js"><span class="line"><span style="color:#4EC9B0">module</span><span style="color:#D4D4D4">.</span><span style="color:#4EC9B0">exports</span><span style="color:#D4D4D4"> = (</span><span style="color:#9CDCFE">eleventyConfig</span><span style="color:#D4D4D4">) </span><span style="color:#569CD6">=></span><span style="color:#D4D4D4"> {</span></span>
+<span class="line"><span style="color:#6A9955">  // Copy all content in `src/css/` to `dist`</span></span>
+<span class="line"><span style="color:#9CDCFE">  eleventyConfig</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">addPassthroughCopy</span><span style="color:#D4D4D4">({ </span><span style="color:#CE9178">"src/css"</span><span style="color:#9CDCFE">:</span><span style="color:#CE9178"> "/"</span><span style="color:#D4D4D4"> });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A9955">  // Copy all content in `src/css/` to `dist/css`</span></span>
+<span class="line"><span style="color:#9CDCFE">  eleventyConfig</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">addPassthroughCopy</span><span style="color:#D4D4D4">({ </span><span style="color:#CE9178">"src/css"</span><span style="color:#9CDCFE">:</span><span style="color:#CE9178"> "css"</span><span style="color:#D4D4D4"> });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C586C0">  return</span><span style="color:#D4D4D4"> {</span></span>
+<span class="line"><span style="color:#9CDCFE">    dir:</span><span style="color:#D4D4D4"> {</span></span>
+<span class="line"><span style="color:#9CDCFE">      input:</span><span style="color:#CE9178"> "src"</span><span style="color:#D4D4D4">,</span></span>
+<span class="line"><span style="color:#9CDCFE">      output:</span><span style="color:#CE9178"> "dist"</span><span style="color:#D4D4D4">,</span></span>
+<span class="line"><span style="color:#D4D4D4">    },</span></span>
+<span class="line"><span style="color:#D4D4D4">  };</span></span>
+<span class="line"><span style="color:#D4D4D4">};</span></span></code></pre>
+
+    </div><h2>Source:</h2>
+<p><a href="https://www.11ty.dev/docs/copy/#change-the-output-directory" target="_blank">https://www.11ty.dev/docs/copy/#change-the-output-directory</a></p>
+ <footer> <time datetime="">2024-07-22</time> <span>#11ty</span> </footer> </article><article id="2024-07-16T0800"> <h1> <a href="#2024-07-16T0800">Git add submodule</a> </h1> 
+    <div class="code-block__wrapper language-bash">
+      <div class="code-block__header">
+        <span class="lang">bash</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-bash"><span class="line"><span style="color:#DCDCAA">git</span><span style="color:#CE9178"> submodule</span><span style="color:#CE9178"> {repo-url}</span><span style="color:#CE9178"> {dirname}</span></span></code></pre>
+
+    </div><p>Example #1 - Add all the content of a repository as a submodule to a given directory of an repository</p>
+
+    <div class="code-block__wrapper language-bash">
+      <div class="code-block__header">
+        <span class="lang">bash</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-bash"><span class="line"><span style="color:#DCDCAA">git</span><span style="color:#CE9178"> submodule</span><span style="color:#CE9178"> add</span><span style="color:#CE9178"> https://github.com/jiminpublic/lab-content</span><span style="color:#CE9178"> src/pages/content</span></span></code></pre>
+
+    </div><p>这里需要注意的是，你不能提前创建好 content 目录，否则会报错：</p>
+
+    <div class="code-block__wrapper language-txt">
+      <div class="code-block__header">
+        <span class="lang">txt</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-txt"><span class="line"><span>fatal: 'src/pages/content' already exists in the index</span></span></code></pre>
+
+    </div><p>也就是说在设置要放置 submodule 的目录时，你必须得让这个命令去帮你创建这个目录。</p>
+<p>命令运行后，会在项目根目录生成一个 <code>.gitmodules</code> 文件：</p>
+
+    <div class="code-block__wrapper language-.gitmodules">
+      <div class="code-block__header">
+        <span class="lang">.gitmodules</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-txt"><span class="line"><span>[submodule "src/pages/content"]</span></span>
+<span class="line"><span>	path = src/pages/content/submodule</span></span>
+<span class="line"><span>	url = https://github.com/jiminpublic/lab-content</span></span></code></pre>
+
+    </div><p>与此同时，<code>.git</code> 目录里的 <code>config</code> 文件会新增以下内容：</p>
+
+    <div class="code-block__wrapper language-config">
+      <div class="code-block__header">
+        <span class="lang">config</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-txt"><span class="line"><span>[submodule "src/pages/content"]</span></span>
+<span class="line"><span>	url = https://github.com/jiminpublic/lab-content</span></span>
+<span class="line"><span>	active = true</span></span></code></pre>
+
+    </div> <footer> <time datetime="">2024-07-16</time> <span>#git</span> </footer> </article><article id="2024-07-16T0810"> <h1> <a href="#2024-07-16T0810">11ty fix the problem that css style does not work</a> </h1> <h2>Problem</h2>
+<p>我遇到的问题是：我在本地上运行时，样式还好好地，但是将网站部署到 Github Page 之后，写在样式表里的样式却一一失效了。</p>
+<p>我很快意识到这个问题可能跟样式表的链接有关，打开控制台一看，果然：</p>
+
+    <div class="code-block__wrapper language-html">
+      <div class="code-block__header">
+        <span class="lang">html</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-html"><span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">link</span><span style="color:#9CDCFE"> rel</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"stylesheet"</span><span style="color:#9CDCFE"> href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"/style.css"</span><span style="color:#808080">></span></span></code></pre>
+
+    </div><p>样式表路径有问题：</p>
+<ul>
+<li>实际路径是： <code>https://jiminpublic.github.io/lab-11ty-njk/style.css</code></li>
+<li>但 <code>link</code> 标签里引用的是 <code>https://jiminpublic.github.io/style.css</code></li>
+</ul>
+<h2>Solution</h2>
+<p>解决这个问题需要做好两件事：</p>
+<ul>
+<li>一是设定部署环境下 11ty build 命令的 <code>pathprefix</code> 参数。</li>
+<li>二是应用 EleventyHtmlBasePlugin 插件，这个插件会给你所有引用了 url 的地方 append 上 pathprefix。</li>
+</ul>
+<p>package.json</p>
+
+    <div class="code-block__wrapper language-json">
+      <div class="code-block__header">
+        <span class="lang">json</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-json"><span class="line"><span style="color:#CE9178">    "build-ghpages"</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">"eleventy --pathprefix=/lab-11ty-njk/"</span><span style="color:#D4D4D4">,</span></span>
+<span class="line"><span style="color:#CE9178">    "predeploy"</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">"npm run build-ghpages"</span><span style="color:#D4D4D4">,</span></span>
+<span class="line"><span style="color:#CE9178">    "deploy"</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">"gh-pages -d dist"</span></span></code></pre>
+
+    </div><p>.eleventy.js</p>
+
+    <div class="code-block__wrapper language-js">
+      <div class="code-block__header">
+        <span class="lang">js</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-js"><span class="line"><span style="color:#569CD6">const</span><span style="color:#D4D4D4"> { </span><span style="color:#4FC1FF">EleventyHtmlBasePlugin</span><span style="color:#D4D4D4"> } = </span><span style="color:#DCDCAA">require</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">"@11ty/eleventy"</span><span style="color:#D4D4D4">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#4EC9B0">module</span><span style="color:#D4D4D4">.</span><span style="color:#4EC9B0">exports</span><span style="color:#D4D4D4"> = </span><span style="color:#569CD6">function</span><span style="color:#D4D4D4"> (</span><span style="color:#9CDCFE">eleventyConfig</span><span style="color:#D4D4D4">) {</span></span>
+<span class="line"><span style="color:#9CDCFE">	eleventyConfig</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">addPlugin</span><span style="color:#D4D4D4">(</span><span style="color:#9CDCFE">EleventyHtmlBasePlugin</span><span style="color:#D4D4D4">);</span></span>
+<span class="line"><span style="color:#6A9955">	// ...</span></span>
+<span class="line"><span style="color:#D4D4D4">}</span></span></code></pre>
+
+    </div><h2>FIN</h2>
+<p>最后部署时 build 出来的样式表的链接就是正确的了：</p>
+
+    <div class="code-block__wrapper language-html">
+      <div class="code-block__header">
+        <span class="lang">html</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-html"><span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">link</span><span style="color:#9CDCFE"> rel</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"stylesheet"</span><span style="color:#9CDCFE"> href</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">"/lab-11ty-njk/style.css"</span><span style="color:#808080">></span></span></code></pre>
+
+    </div><p>source:</p>
+<ul>
+<li><a href="https://www.11ty.dev/docs/config/#deploy-to-a-subdirectory-with-a-path-prefix" target="_blank">https://www.11ty.dev/docs/config/#deploy-to-a-subdirectory-with-a-path-prefix</a>
+<ul>
+<li>If your site lives in a different subdirectory (particularly useful with GitHub pages), use pathPrefix to specify this.</li>
+</ul>
+</li>
+<li><a href="https://www.11ty.dev/docs/plugins/html-base/" target="_blank">https://www.11ty.dev/docs/plugins/html-base/</a>
+<ul>
+<li>HTML Base Plugin — Eleventy</li>
+</ul>
+</li>
+</ul>
+ <footer> <time datetime="">2024-07-16</time> <span>#11ty</span> </footer> </article><article id="2024-07-16T0820"> <h1> <a href="#2024-07-16T0820">Deploy an 11ty project to Github pages</a> </h1> <p>source:</p>
+<ul>
+<li><a href="https://www.11ty.dev/docs/deployment/#deploy-an-eleventy-project-to-github-pages" target="_blank">https://www.11ty.dev/docs/deployment/#deploy-an-eleventy-project-to-github-pages</a> - 借助 Github Actions</li>
+</ul>
+ <footer> <time datetime="">2024-07-16</time> <span>#11ty</span> </footer> </article><article id="2024-07-12T2000"> <h1> <a href="#2024-07-12T2000">Astro render markdown to html</a> </h1> <p>1）</p>
+
+    <div class="code-block__wrapper language-astro">
+      <div class="code-block__header">
+        <span class="code-block__filename">/src/pages/example.astro</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-astro"><span class="line"><span style="color:#6A9955">---</span></span>
+<span class="line"><span style="color:#6A9955">// Using "marked" to parse markdown to html (https://github.com/markedjs/marked)</span></span>
+<span class="line"><span style="color:#C586C0">import</span><span style="color:#D4D4D4"> { </span><span style="color:#9CDCFE">marked</span><span style="color:#D4D4D4"> } </span><span style="color:#C586C0">from</span><span style="color:#CE9178"> 'marked'</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> markdown</span><span style="color:#D4D4D4"> = </span><span style="color:#CE9178">"# heading 1"</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> content</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">marked</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">parse</span><span style="color:#D4D4D4">(</span><span style="color:#9CDCFE">markdown</span><span style="color:#D4D4D4">);</span></span>
+<span class="line"><span style="color:#6A9955">---</span></span>
+<span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">article</span><span style="color:#9CDCFE"> set:html</span><span style="color:#D4D4D4">=</span><span style="color:#569CD6">{</span><span style="color:#9CDCFE">content</span><span style="color:#569CD6">}</span><span style="color:#808080"> /></span></span></code></pre>
+
+    </div><ol>
+<li>将 Markdown 解析为 HTML。</li>
+<li>给元素设置 innerHTML。</li>
+</ol>
+<p>source: <a href="https://docs.astro.build/en/guides/markdown-content/#fetching-remote-markdown" target="_blank">https://docs.astro.build/en/guides/markdown-content/#fetching-remote-markdown</a></p>
+<p>2）
+如果你不想将 HTML 直接设置在某个元素上，则可以设置在 Astro 内置的 <code>Fragment</code> 组件上：</p>
+
+    <div class="code-block__wrapper language-astro">
+      <div class="code-block__header">
+        <span class="code-block__filename">src/pages/example.astro</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-astro"><span class="line"><span style="color:#6A9955">---</span></span>
+<span class="line"><span style="color:#6A9955">// Using "marked" (https://github.com/markedjs/marked)</span></span>
+<span class="line"><span style="color:#C586C0">import</span><span style="color:#D4D4D4"> { </span><span style="color:#9CDCFE">marked</span><span style="color:#D4D4D4"> } </span><span style="color:#C586C0">from</span><span style="color:#CE9178"> 'marked'</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> markdown</span><span style="color:#D4D4D4"> = </span><span style="color:#CE9178">"# heading 1"</span></span>
+<span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> content</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">marked</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">parse</span><span style="color:#D4D4D4">(</span><span style="color:#9CDCFE">markdown</span><span style="color:#D4D4D4">);</span></span>
+<span class="line"><span style="color:#6A9955">---</span></span>
+<span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#4EC9B0">Fragment</span><span style="color:#9CDCFE"> set:html</span><span style="color:#D4D4D4">=</span><span style="color:#569CD6">{</span><span style="color:#9CDCFE">content</span><span style="color:#569CD6">}</span><span style="color:#808080"> /></span></span></code></pre>
+
+    </div><p>source: <a href="https://docs.astro.build/en/basics/astro-syntax/#fragments" target="_blank">https://docs.astro.build/en/basics/astro-syntax/#fragments</a></p>
+ <footer> <time datetime="">2024-07-12</time> <span>#astro</span> </footer> </article><article id="2024-07-12T2010"> <h1> <a href="#2024-07-12T2010">JavaScript slugify a string</a> </h1> <p>Using <code>@sindresorhus/slugify</code> to slugify a string in JavaScript:</p>
+
+    <div class="code-block__wrapper language-js">
+      <div class="code-block__header">
+        <span class="lang">js</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-js"><span class="line"><span style="color:#C586C0">import</span><span style="color:#9CDCFE"> slugify</span><span style="color:#C586C0"> from</span><span style="color:#CE9178"> '@sindresorhus/slugify'</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#DCDCAA">slugify</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">'BAR and baz'</span><span style="color:#D4D4D4">);</span></span>
+<span class="line"><span style="color:#6A9955">//=> 'bar-and-baz'</span></span></code></pre>
+
+    </div><p>source: <a href="https://github.com/sindresorhus/slugify" target="_blank">https://github.com/sindresorhus/slugify</a></p>
+ <footer> <time datetime="">2024-07-12</time> <span>#javascript</span> </footer> </article><article id="2024-07-12T2020"> <h1> <a href="#2024-07-12T2020">JavaScript check whether or not a pattern exists in a searched string</a> </h1> <p>To do this, we can use the <code>test()</code> method of <code>RegExp</code> instances.</p>
+<p>Example #1 - Check if there are hashtags in the given string:</p>
+
+    <div class="code-block__wrapper language-js">
+      <div class="code-block__header">
+        <span class="lang">js</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-js"><span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> result</span><span style="color:#D4D4D4"> =</span><span style="color:#D16969"> /#</span><span style="color:#CE9178">[</span><span style="color:#D16969">a-z</span><span style="color:#CE9178">]</span><span style="color:#D16969">/</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">test</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">"hello #world"</span><span style="color:#D4D4D4">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#9CDCFE">console</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">log</span><span style="color:#D4D4D4">(</span><span style="color:#9CDCFE">result</span><span style="color:#D4D4D4">); </span><span style="color:#6A9955">// true</span></span></code></pre>
+
+    </div><p>Example #2 - Check if &quot;hello&quot; is contained at the very beginning of a string:</p>
+
+    <div class="code-block__wrapper language-js">
+      <div class="code-block__header">
+        <span class="lang">js</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-js"><span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> str</span><span style="color:#D4D4D4"> = </span><span style="color:#CE9178">"hello world!"</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> result</span><span style="color:#D4D4D4"> =</span><span style="color:#D16969"> /</span><span style="color:#DCDCAA">^</span><span style="color:#D16969">hello/</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">test</span><span style="color:#D4D4D4">(</span><span style="color:#9CDCFE">str</span><span style="color:#D4D4D4">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#9CDCFE">console</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">log</span><span style="color:#D4D4D4">(</span><span style="color:#9CDCFE">result</span><span style="color:#D4D4D4">); </span><span style="color:#6A9955">// true</span></span></code></pre>
+
+    </div><p>source: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test" target="_blank">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test</a></p>
+ <footer> <time datetime="">2024-07-12</time> <span>#javascript</span> </footer> </article><article id="2024-07-12T2030"> <h1> <a href="#2024-07-12T2030">JavaScript removes elements from an array</a> </h1> <p>To do this, we can use the <code>splice()</code> method of <code>Array</code> instances.</p>
+<p>Example #1 - Remove 1 element at index 3:</p>
+
+    <div class="code-block__wrapper language-js">
+      <div class="code-block__header">
+        <span class="lang">js</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-js"><span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> myFish</span><span style="color:#D4D4D4"> = [</span><span style="color:#CE9178">"angel"</span><span style="color:#D4D4D4">, </span><span style="color:#CE9178">"clown"</span><span style="color:#D4D4D4">, </span><span style="color:#CE9178">"drum"</span><span style="color:#D4D4D4">, </span><span style="color:#CE9178">"mandarin"</span><span style="color:#D4D4D4">, </span><span style="color:#CE9178">"sturgeon"</span><span style="color:#D4D4D4">];</span></span>
+<span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> removed</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">myFish</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">splice</span><span style="color:#D4D4D4">(</span><span style="color:#B5CEA8">3</span><span style="color:#D4D4D4">, </span><span style="color:#B5CEA8">1</span><span style="color:#D4D4D4">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A9955">// myFish is ["angel", "clown", "drum", "sturgeon"]</span></span>
+<span class="line"><span style="color:#6A9955">// removed is ["mandarin"]</span></span></code></pre>
+
+    </div><p>Example #2 - Remove 2 elements, starting from index 2:</p>
+
+    <div class="code-block__wrapper language-js">
+      <div class="code-block__header">
+        <span class="lang">js</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-js"><span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> myFish</span><span style="color:#D4D4D4"> = [</span><span style="color:#CE9178">"parrot"</span><span style="color:#D4D4D4">, </span><span style="color:#CE9178">"anemone"</span><span style="color:#D4D4D4">, </span><span style="color:#CE9178">"blue"</span><span style="color:#D4D4D4">, </span><span style="color:#CE9178">"trumpet"</span><span style="color:#D4D4D4">, </span><span style="color:#CE9178">"sturgeon"</span><span style="color:#D4D4D4">];</span></span>
+<span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> removed</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">myFish</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">splice</span><span style="color:#D4D4D4">(</span><span style="color:#B5CEA8">2</span><span style="color:#D4D4D4">, </span><span style="color:#B5CEA8">2</span><span style="color:#D4D4D4">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A9955">// myFish is ["parrot", "anemone", "sturgeon"]</span></span>
+<span class="line"><span style="color:#6A9955">// removed is ["blue", "trumpet"]</span></span></code></pre>
+
+    </div><p>source: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice" target="_blank">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice</a></p>
+ <footer> <time datetime="">2024-07-12</time> <span>#javascript</span> </footer> </article><article id="2024-07-04T0930"> <h1> <a href="#2024-07-04T0930">Git reset last commit</a> </h1> <p>1）要撤销上一次提交的更改，可以使用以下 Git 命令：</p>
+
+    <div class="code-block__wrapper language-bash">
+      <div class="code-block__header">
+        <span class="lang">bash</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-bash"><span class="line"><span style="color:#DCDCAA">git</span><span style="color:#CE9178"> reset</span><span style="color:#569CD6"> --soft</span><span style="color:#CE9178"> HEAD~1</span></span></code></pre>
+
+    </div><p>这个命令会将 <code>HEAD</code> 移动到上一次的 commit，回退到 changes staged 的时候。</p>
+<p>2）如果你想要完全撤销最后一次提交的更改，可以使用 <code>--hard</code> 参数：</p>
+
+    <div class="code-block__wrapper language-bash">
+      <div class="code-block__header">
+        <span class="lang">bash</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-bash"><span class="line"><span style="color:#DCDCAA">git</span><span style="color:#CE9178"> reset</span><span style="color:#569CD6"> --hard</span><span style="color:#CE9178"> HEAD~1</span></span></code></pre>
+
+    </div><p>这会将 <code>HEAD</code> 移动到上一次的 commit，并会丢弃工作目录中的所有更改。也就是说，回退到了上一次 commit 时的状态。</p>
+ <footer> <time datetime="">2024-07-04</time> <span>#git</span> </footer> </article><article id="2024-06-23T0930"> <h1> <a href="#2024-06-23T0930">HTML native dialog</a> </h1> <h2>render a dialog</h2>
+
+    <div class="code-block__wrapper language-html">
+      <div class="code-block__header">
+        <span class="lang">html</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-html"><span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">dialog</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">  &#x3C;</span><span style="color:#569CD6">button</span><span style="color:#808080">></span><span style="color:#D4D4D4">Close</span><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">button</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">  &#x3C;</span><span style="color:#569CD6">p</span><span style="color:#808080">></span><span style="color:#D4D4D4">This modal dialog has a groovy backdrop!</span><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">p</span><span style="color:#808080">></span></span>
+<span class="line"><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">dialog</span><span style="color:#808080">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">button</span><span style="color:#808080">></span><span style="color:#D4D4D4">Show the dialog</span><span style="color:#808080">&#x3C;/</span><span style="color:#569CD6">button</span><span style="color:#808080">></span></span></code></pre>
+
+    </div><p>dialog 元素默认是关闭的，即默认是不出现在用户眼前的。这个跟其他 html element 不太一样，并不是你写在 html 里了就会出现在用户视野里。<strong>你需要通过 JavaScript 去打开它。</strong></p>
+<h2>open the dialog</h2>
+<p>要打开 dialog 的话，你需要先选中 dialog 元素，然后通过 <code>dialog.showModal()</code> 等方式去打开它。</p>
+
+    <div class="code-block__wrapper language-js">
+      <div class="code-block__header">
+        <span class="lang">js</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-js"><span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> dialog</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">document</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">querySelector</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">"dialog"</span><span style="color:#D4D4D4">);</span></span>
+<span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> showButton</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">document</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">querySelector</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">"dialog + button"</span><span style="color:#D4D4D4">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A9955">// opens the dialog modally</span></span>
+<span class="line"><span style="color:#9CDCFE">showButton</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">addEventListener</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">"click"</span><span style="color:#D4D4D4">, () </span><span style="color:#569CD6">=></span><span style="color:#D4D4D4"> {</span></span>
+<span class="line"><span style="color:#9CDCFE">  dialog</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">showModal</span><span style="color:#D4D4D4">();</span></span>
+<span class="line"><span style="color:#D4D4D4">});</span></span></code></pre>
+
+    </div><p>这里，我们通过  <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal" title=".showModal()" target="_blank"><code>.showModal()</code></a> 方法打开了一个 modal dialog。</p>
+<h2>close the dialog</h2>
+
+    <div class="code-block__wrapper language-js">
+      <div class="code-block__header">
+        <span class="lang">js</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-js"><span class="line"><span style="color:#569CD6">const</span><span style="color:#4FC1FF"> closeButton</span><span style="color:#D4D4D4"> = </span><span style="color:#9CDCFE">document</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">querySelector</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">"dialog button"</span><span style="color:#D4D4D4">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#9CDCFE">closeButton</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">addEventListener</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">"click"</span><span style="color:#D4D4D4">, () </span><span style="color:#569CD6">=></span><span style="color:#D4D4D4"> {</span></span>
+<span class="line"><span style="color:#9CDCFE">  dialog</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">close</span><span style="color:#D4D4D4">();</span></span>
+<span class="line"><span style="color:#D4D4D4">});</span></span></code></pre>
+
+    </div><p>dialog 可以通过  <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/close" title=".close()" target="_blank"><code>.close()</code></a> 方法来关闭。</p>
+<p>对于 modal dialog，也可以通过按下 Esc 键来关闭。</p>
+<h2>the display CSS property of the dialog element</h2>
+<p>当 dialog 关闭时：</p>
+
+    <div class="code-block__wrapper language-css">
+      <div class="code-block__header">
+        <span class="lang">css</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-css"><span class="line"><span style="color:#D7BA7D">dialog:not</span><span style="color:#D4D4D4">([</span><span style="color:#9CDCFE">open</span><span style="color:#D4D4D4">]) {</span></span>
+<span class="line"><span style="color:#9CDCFE">	display</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">none</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#D4D4D4">}</span></span></code></pre>
+
+    </div><p>当 dialog 打开时：</p>
+
+    <div class="code-block__wrapper language-css">
+      <div class="code-block__header">
+        <span class="lang">css</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-css"><span class="line"><span style="color:#D7BA7D">dialog</span><span style="color:#D4D4D4"> {</span></span>
+<span class="line"><span style="color:#9CDCFE">	display</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">block</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#D4D4D4">}</span></span></code></pre>
+
+    </div><p>但一旦你自己给 dialog 元素的 <code>display</code> CSS 属性做了设置，就会破坏这个行为。对这个的解决方法就是不要直接在 dialog 元素上应用任何 <code>display</code>，而是将 dialog content 再 wrap 一层，把你要的 display 应用在这个 dialog content wrapper 上。</p>
+<p>source: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog" target="_blank">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog</a></p>
+ <footer> <time datetime="">2024-06-23</time> <span>#html</span> </footer> </article><article id="2024-06-23T0940"> <h1> <a href="#2024-06-23T0940">JavaScript reload webpage</a> </h1> <p>The <strong><code>reload()</code></strong> method of the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Location" target="_blank"><code>Location</code></a> interface reloads the current URL, <strong>like the Refresh button</strong>.</p>
+<p>source: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Location/reload" target="_blank">https://developer.mozilla.org/en-US/docs/Web/API/Location/reload</a></p>
+ <footer> <time datetime="">2024-06-23</time> <span>#javascript</span> </footer> </article><article id="2024-06-23T0950"> <h1> <a href="#2024-06-23T0950">deploy plain html to Github Page</a> </h1> <ol>
+<li>首先你的本地仓库先创建好，确保所有改动都 commit 了。</li>
+<li>然后在 Github 上创建一个仓库。</li>
+<li>然后回到你的本地仓库，与你的远程仓库做好连接，然后 push。</li>
+<li>最后回到你的远程仓库的 dashboard，打开 “setting → pages”，在 select  branch 那里将 None 改为你需要的分支，比如 main，目录选择如 root，最后点击保存，需要你做的工作就完成了。接下里等几分钟让 Github 部署好你的网站，之后你就可以访问了。</li>
+</ol>
+ <footer> <time datetime="">2024-06-23</time> <span>#github</span> </footer> </article> </main>  </body></html> 
