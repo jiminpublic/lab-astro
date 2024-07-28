@@ -1,5 +1,90 @@
 <!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="shortcut icon" href="#" type="image/x-icon"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>TILs | Made with Astro</title><style>*,*:before,*:after{box-sizing:border-box}*{margin:0}body{line-height:1.5;-webkit-font-smoothing:antialiased}img,picture,video,canvas,svg{display:block;max-width:100%}input,button,textarea,select{font:inherit}p,h1,h2,h3,h4,h5,h6{overflow-wrap:break-word}#root,#__next{isolation:isolate}html{overflow-y:scroll}:root{overflow-y:auto;overflow-x:hidden}:root body{position:absolute}body{width:100vw;overflow:hidden}:root{--bg-color: white;--text-primary: #444;--text-secondary: #757575;--text-accent: #21759b;--border-color: #ededed;--link-hover-color: #0f3647}body{font-size:16px;font-family:system-ui,sans-serif}header,main{max-width:620px;margin:auto;padding:0 1rem}header{text-align:center;padding:2rem}main{margin-top:1rem;margin-bottom:1rem}article{padding-top:1rem;color:var(--text-primary);font-size:15px;&:not(:is(:first-child,:last-child)){margin:5rem 0}h1,h2,h3,p,ul,ol,.code-block__wrapper{margin-bottom:1.5rem}p,ul,ol{line-height:24px}li:not(:last-child){margin-bottom:.25rem}h1{font-size:20px;margin-bottom:1.5rem}h2{font-size:15px}h1 a{text-decoration:none}a{color:var(--text-accent);&:hover{color:var(--link-hover-color)}}p:has(+:is(ul,ol)){margin-bottom:.25rem}ul,ol{padding-left:1.5rem}li:has(:is(ul,ol)) :is(ul,ol){margin-bottom:0}footer{font-size:13px;color:var(--text-secondary);display:flex;gap:1rem}}.code-block__wrapper{border-radius:8px}.code-block__header{padding:.5rem 1rem;border-radius:8px 8px 0 0;border-bottom:1px solid #555;background-color:#1e1e1e;color:#d4d4d4be;font-size:14px}.code-block__wrapper pre{padding:1rem;border-radius:0 0 8px 8px;margin-top:0;overflow:auto}code:not([class]){background-color:#f6f7f8;border-radius:2px;padding:0 4px}
-</style></head> <body>  <header> <h1>TILs</h1> <p>There are 26 TILs.</p> </header> <main> <article id="2024-07-26T0800"> <h1> <a href="#2024-07-26T0800">Astro - `public` dir</a> </h1> <p>你可以在 <code>public/</code> 目录中存放不需要在 Astro 打包过程中处理的文件和资源。</p>
+</style></head> <body>  <header> <h1>TILs</h1> <p>There are 29 TILs.</p> </header> <main> <article id="2024-07-27T0800"> <h1> <a href="#2024-07-27T0800">HTML - lazy load images using only HTML</a> </h1> <p>Yes, you can lazy load images using only HTML without JavaScript.</p>
+<p>Just set the <code>loading</code> attribute on <code>&lt;img&gt;</code> tags to <code>lazy</code>. The browser will load the image when the user scrolls to it.</p>
+<p>For example:</p>
+
+    <div class="code-block__wrapper language-html">
+      <div class="code-block__header">
+        <span class="lang">html</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-html"><span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#569CD6">img</span><span style="color:#9CDCFE"> src</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">'image.jpg'</span><span style="color:#9CDCFE"> alt</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">'Alt text...'</span><span style="color:#9CDCFE"> loading</span><span style="color:#D4D4D4">=</span><span style="color:#CE9178">'lazy'</span><span style="color:#808080"> /></span></span></code></pre>
+
+    </div><p>Source:</p>
+<p><a href="https://saneef.com/blog/lazy-load/" target="_blank">https://saneef.com/blog/lazy-load/</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#loading" target="_blank">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#loading</a></p>
+ <footer> <time datetime="">2024-07-27</time> <span>#html</span> </footer> </article><article id="2024-07-27T0810"> <h1> <a href="#2024-07-27T0810">Astro - collection item data structure</a> </h1> <p>For <code>type: &quot;content&quot;</code> collections ,each collection item will have the following data:</p>
+<ul>
+<li><code>id</code>: The file name (include the file extension) of the collection entry file.</li>
+<li><code>collection</code>: The folder name of the collection directory.</li>
+<li><code>data</code>: An object of frontmatter properties inferred from your collection schema. Defaults to <code>any</code> if no schema is configured.</li>
+<li><code>slug</code>: Defaults to the sluggify <code>id</code> without the file extension.</li>
+<li><code>body</code>: A string containing the raw, uncompiled body of the Markdown or MDX document.</li>
+<li><code>render()</code></li>
+</ul>
+<p>For Example:</p>
+
+    <div class="code-block__wrapper language-js">
+      <div class="code-block__header">
+        <span class="lang">js</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-js"><span class="line"><span style="color:#D4D4D4">{</span></span>
+<span class="line"><span style="color:#C8C8C8">    id</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">"2024-06-23T0930.md"</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#C8C8C8">    slug</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">"2024-06-23t0930"</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#C8C8C8">    body</span><span style="color:#D4D4D4">: </span><span style="color:#9CDCFE">string</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#C8C8C8">    collection</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">"tils"</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#C8C8C8">    data</span><span style="color:#D4D4D4">: </span><span style="color:#9CDCFE">any</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#D4D4D4">}</span></span></code></pre>
+
+    </div><p>Source:</p>
+<p><a href="https://docs.astro.build/en/reference/api-reference/#collection-entry-type" target="_blank">https://docs.astro.build/en/reference/api-reference/#collection-entry-type</a></p>
+ <footer> <time datetime="">2024-07-27</time> <span>#astro</span> </footer> </article><article id="2024-07-27T0820"> <h1> <a href="#2024-07-27T0820">CSS - Prevent Horizontal Scroll on Smaller Devices</a> </h1> <h2>问题</h2>
+<p>当页面宽度较小时，莫名出现横向滚动条。</p>
+<h2>解决方法 (有效)</h2>
+
+    <div class="code-block__wrapper language-css">
+      <div class="code-block__header">
+        <span class="lang">css</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-css"><span class="line"><span style="color:#D7BA7D">html</span><span style="color:#D4D4D4"> {</span></span>
+<span class="line"><span style="color:#9CDCFE">  overflow-y</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">scroll</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#D4D4D4">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D7BA7D">:root</span><span style="color:#D4D4D4"> {</span></span>
+<span class="line"><span style="color:#9CDCFE">  overflow-y</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">auto</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#9CDCFE">  overflow-x</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">hidden</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#D4D4D4">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D7BA7D">:root</span><span style="color:#D7BA7D"> body</span><span style="color:#D4D4D4"> {</span></span>
+<span class="line"><span style="color:#9CDCFE">  position</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">absolute</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#D4D4D4">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D7BA7D">body</span><span style="color:#D4D4D4"> {</span></span>
+<span class="line"><span style="color:#9CDCFE">  width</span><span style="color:#D4D4D4">: </span><span style="color:#B5CEA8">100vw</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#9CDCFE">  overflow</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">hidden</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#D4D4D4">}</span></span></code></pre>
+
+    </div><p>该方法完美解决，但我不明白原理。</p>
+<p>参考：</p>
+<p><a href="https://www.cnblogs.com/ricksteves/p/12266814.html" target="_blank">https://www.cnblogs.com/ricksteves/p/12266814.html</a>
+解决移动端页面出现 X轴横向滚动条问题 - 行方思远 - 博客园</p>
+<p><a href="https://www.zhangxinxu.com/wordpress/2015/01/css-page-scrollbar-toggle-center-no-jumping/" target="_blank">https://www.zhangxinxu.com/wordpress/2015/01/css-page-scrollbar-toggle-center-no-jumping/</a>
+小tip:CSS vw让overflow:auto页面滚动条出现时不跳动 « 张鑫旭-鑫空间-鑫生活</p>
+<h2>解决方法 (无效)</h2>
+
+    <div class="code-block__wrapper language-css">
+      <div class="code-block__header">
+        <span class="lang">css</span>
+      </div>
+      <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-css"><span class="line"><span style="color:#D7BA7D">body</span><span style="color:#D4D4D4"> {</span></span>
+<span class="line"><span style="color:#9CDCFE">  max-width</span><span style="color:#D4D4D4">: </span><span style="color:#B5CEA8">100%</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#9CDCFE">  overflow-x</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">hidden</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#D4D4D4">}</span></span></code></pre>
+
+    </div><p>该方法仅对桌面端有用，移动端无效。</p>
+<p>参考：</p>
+<p><a href="https://www.shecodes.io/athena/9925-prevent-horizontal-scroll-on-smaller-devices-with-css" target="_blank">https://www.shecodes.io/athena/9925-prevent-horizontal-scroll-on-smaller-devices-with-css</a>
+Prevent Horizontal Scroll on Smaller Devices</p>
+ <footer> <time datetime="">2024-07-27</time> <span>#css</span> </footer> </article><article id="2024-07-26T0800"> <h1> <a href="#2024-07-26T0800">Astro - `public` dir</a> </h1> <p>你可以在 <code>public/</code> 目录中存放不需要在 Astro 打包过程中处理的文件和资源。</p>
 <p>Astro 会将这个目录下的内容拷贝到打包目录中。注意，并不是连带 <code>public/</code> 目录本身拷贝到打包目录中。</p>
 <h2>举个例子：</h2>
 <p>源码：</p>
