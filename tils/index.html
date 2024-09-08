@@ -1,5 +1,6 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="shortcut icon" href="#" type="image/x-icon"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>TILs | Made with Astro</title><style>*,*:before,*:after{box-sizing:border-box}*{margin:0}body{line-height:1.5;-webkit-font-smoothing:antialiased}img,picture,video,canvas,svg{display:block;max-width:100%}input,button,textarea,select{font:inherit}p,h1,h2,h3,h4,h5,h6{overflow-wrap:break-word}#root,#__next{isolation:isolate}html{overflow-y:scroll}:root{overflow-y:auto;overflow-x:hidden}:root body{position:absolute}body{width:100vw;overflow:hidden}:root{--bg-color: white;--text-primary: #444;--text-secondary: #757575;--text-accent: #21759b;--border-color: #ededed;--link-hover-color: #0f3647}body{font-size:16px;font-family:system-ui,sans-serif}header,main{max-width:620px;margin:auto;padding:0 1rem}header{text-align:center;padding:2rem}main{margin-top:1rem;margin-bottom:1rem}article{padding-top:1rem;color:var(--text-primary);font-size:15px;&:not(:is(:first-child,:last-child)){margin:5rem 0}h1,h2,h3,p,ul,ol,.code-block__wrapper{margin-bottom:1.5rem}p,ul,ol{line-height:24px}li:not(:last-child){margin-bottom:.25rem}h1{font-size:20px;margin-bottom:1.5rem}h2{font-size:15px}h1 a{text-decoration:none}a{color:var(--text-accent);&:hover{color:var(--link-hover-color)}}p:has(+:is(ul,ol)){margin-bottom:.25rem}ul,ol{padding-left:1.5rem}li:has(:is(ul,ol)) :is(ul,ol){margin-bottom:0}footer{font-size:13px;color:var(--text-secondary);display:flex;gap:1rem}}.code-block__wrapper{border-radius:8px}.code-block__header{padding:.5rem 1rem;border-radius:8px 8px 0 0;border-bottom:1px solid #555;background-color:#1e1e1e;color:#d4d4d4be;font-size:14px}.code-block__wrapper pre{padding:1rem;border-radius:0 0 8px 8px;margin-top:0;overflow:auto}code:not([class]){background-color:#f6f7f8;border-radius:2px;padding:0 4px}
-</style></head> <body>  <header> <h1>TILs</h1> <p>There are 29 TILs.</p> </header> <main> <article id="2024-07-27T0800"> <h1> <a href="#2024-07-27T0800">HTML - lazy load images using only HTML</a> </h1> <p>Yes, you can lazy load images using only HTML without JavaScript.</p>
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="shortcut icon" href="#" type="image/x-icon"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>TILs | Made with Astro</title><style>*,*:before,*:after{box-sizing:border-box}*{margin:0}body{line-height:1.5;-webkit-font-smoothing:antialiased}img,picture,video,canvas,svg{display:block;max-width:100%}input,button,textarea,select{font:inherit}p,h1,h2,h3,h4,h5,h6{overflow-wrap:break-word}#root,#__next{isolation:isolate}
+:root{--bg-color: white;--text-primary: #444;--text-secondary: #757575;--text-accent: #21759b;--border-color: #ededed;--link-hover-color: #0f3647}body{font-size:16px;font-family:system-ui,sans-serif;>:is(main,header){max-width:620px;margin:auto;padding:0 1rem}>header{text-align:center;padding-top:2rem;padding-bottom:2rem}>main{margin-top:1rem;margin-bottom:1rem}}article{padding-top:1rem;color:var(--text-primary);font-size:15px;&:not(:is(:first-child,:last-child)){margin:5rem 0}header,h1,h2,h3,p,ul,ol,.code-block__wrapper{margin-bottom:1.5rem}p,ul,ol{line-height:24px}li:not(:last-child){margin-bottom:.25rem}h1{font-size:20px;margin-bottom:1.5rem}h2{font-size:15px}h1 a{text-decoration:none}a{color:var(--text-accent);&:hover{color:var(--link-hover-color)}}p:has(+:is(ul,ol)){margin-bottom:.25rem}ul,ol{padding-left:1.5rem}li:has(:is(ul,ol)) :is(ul,ol){margin-bottom:0}header{font-size:13px;color:var(--text-secondary);display:flex;gap:1rem}}.code-block__wrapper{border-radius:8px}.code-block__header{padding:.5rem 1rem;border-radius:8px 8px 0 0;border-bottom:1px solid #555;background-color:#1e1e1e;color:#d4d4d4be;font-size:14px}.code-block__wrapper pre{padding:1rem;border-radius:0 0 8px 8px;margin-top:0;overflow:auto}code:not([class]){background-color:#f6f7f8;border-radius:2px;padding:0 4px}body>header{position:sticky;top:0;background-color:var(--bg-color)}.search-wrapper{position:relative;input{width:100%}}#search-result{background-color:var(--bg-color);position:absolute;top:40px;width:100%;border-radius:4px;padding-left:0;text-align:left;&:has(li){border:1px solid var(--border-color)}li{list-style:none;&:hover{background-color:var(--border-color)}}a{display:inline-block;width:100%;padding:6px 1rem}}body{overflow:auto;scroll-padding-top:220px}
+</style><script type="module" src="/lab-astro/_astro/hoisted.THR0NzoU.js"></script></head> <body>  <header> <h1>TILs</h1> <p>There are 29 TILs.</p> <!-- Search --> <div class="search-wrapper"> <form id="search-form"> <input name="search" type="search" placeholder="Types..."> </form> <ul id="search-result"></ul> </div> </header> <main> <!--  --> <article id="2024-07-27T0800"> <header> <time datetime="">2024-07-27</time> <span>#html</span> </header> <h1> <a href="#2024-07-27T0800">HTML - lazy load images using only HTML</a> </h1> <p>Yes, you can lazy load images using only HTML without JavaScript.</p>
 <p>Just set the <code>loading</code> attribute on <code>&lt;img&gt;</code> tags to <code>lazy</code>. The browser will load the image when the user scrolls to it.</p>
 <p>For example:</p>
 
@@ -12,7 +13,7 @@
     </div><p>Source:</p>
 <p><a href="https://saneef.com/blog/lazy-load/" target="_blank">https://saneef.com/blog/lazy-load/</a></p>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#loading" target="_blank">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#loading</a></p>
- <footer> <time datetime="">2024-07-27</time> <span>#html</span> </footer> </article><article id="2024-07-27T0810"> <h1> <a href="#2024-07-27T0810">Astro - collection item data structure</a> </h1> <p>For <code>type: &quot;content&quot;</code> collections ,each collection item will have the following data:</p>
+ </article><article id="2024-07-27T0810"> <header> <time datetime="">2024-07-27</time> <span>#astro</span> </header> <h1> <a href="#2024-07-27T0810">Astro - collection item data structure</a> </h1> <p>For <code>type: &quot;content&quot;</code> collections ,each collection item will have the following data:</p>
 <ul>
 <li><code>id</code>: The file name (include the file extension) of the collection entry file.</li>
 <li><code>collection</code>: The folder name of the collection directory.</li>
@@ -37,7 +38,7 @@
 
     </div><p>Source:</p>
 <p><a href="https://docs.astro.build/en/reference/api-reference/#collection-entry-type" target="_blank">https://docs.astro.build/en/reference/api-reference/#collection-entry-type</a></p>
- <footer> <time datetime="">2024-07-27</time> <span>#astro</span> </footer> </article><article id="2024-07-27T0820"> <h1> <a href="#2024-07-27T0820">CSS - Prevent Horizontal Scroll on Smaller Devices</a> </h1> <h2>问题</h2>
+ </article><article id="2024-07-27T0820"> <header> <time datetime="">2024-07-27</time> <span>#css</span> </header> <h1> <a href="#2024-07-27T0820">CSS - Prevent Horizontal Scroll on Smaller Devices</a> </h1> <h2>问题</h2>
 <p>当页面宽度较小时，莫名出现横向滚动条。</p>
 <h2>解决方法 (有效)</h2>
 
@@ -84,7 +85,7 @@
 <p>参考：</p>
 <p><a href="https://www.shecodes.io/athena/9925-prevent-horizontal-scroll-on-smaller-devices-with-css" target="_blank">https://www.shecodes.io/athena/9925-prevent-horizontal-scroll-on-smaller-devices-with-css</a>
 Prevent Horizontal Scroll on Smaller Devices</p>
- <footer> <time datetime="">2024-07-27</time> <span>#css</span> </footer> </article><article id="2024-07-26T0800"> <h1> <a href="#2024-07-26T0800">Astro - `public` dir</a> </h1> <p>你可以在 <code>public/</code> 目录中存放不需要在 Astro 打包过程中处理的文件和资源。</p>
+ </article><article id="2024-07-26T0800"> <header> <time datetime="">2024-07-26</time> <span>#astro</span> </header> <h1> <a href="#2024-07-26T0800">Astro - `public` dir</a> </h1> <p>你可以在 <code>public/</code> 目录中存放不需要在 Astro 打包过程中处理的文件和资源。</p>
 <p>Astro 会将这个目录下的内容拷贝到打包目录中。注意，并不是连带 <code>public/</code> 目录本身拷贝到打包目录中。</p>
 <h2>举个例子：</h2>
 <p>源码：</p>
@@ -121,7 +122,7 @@ Prevent Horizontal Scroll on Smaller Devices</p>
 <ul>
 <li><code>public/</code> 目录用于存放不需要在 Astro 打包过程中处理的文件和资源。该文件夹中的文件将<strong>原封不动地拷贝到打包目录中</strong>，然后再打包您的站点。</li>
 </ul>
- <footer> <time datetime="">2024-07-26</time> <span>#astro</span> </footer> </article><article id="2024-07-26T0810"> <h1> <a href="#2024-07-26T0810">Node.js - 读取自定义环境变量</a> </h1> <p>方法：使用 <a href="https://github.com/motdotla/dotenv" target="_blank">https://github.com/motdotla/dotenv</a></p>
+ </article><article id="2024-07-26T0810"> <header> <time datetime="">2024-07-26</time> <span>#nodejs</span> </header> <h1> <a href="#2024-07-26T0810">Node.js - 读取自定义环境变量</a> </h1> <p>方法：使用 <a href="https://github.com/motdotla/dotenv" target="_blank">https://github.com/motdotla/dotenv</a></p>
 <p>安装：</p>
 
     <div class="code-block__wrapper language-bash">
@@ -153,7 +154,7 @@ Prevent Horizontal Scroll on Smaller Devices</p>
 <span class="line"><span style="color:#6A9955">// Now, `process.env` has the keys and values you defined in your .env file.</span></span>
 <span class="line"><span style="color:#9CDCFE">console</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">log</span><span style="color:#D4D4D4">(</span><span style="color:#9CDCFE">process</span><span style="color:#D4D4D4">.</span><span style="color:#9CDCFE">env</span><span style="color:#D4D4D4">.</span><span style="color:#4FC1FF">TOKEN</span><span style="color:#D4D4D4">);</span></span></code></pre>
 
-    </div> <footer> <time datetime="">2024-07-26</time> <span>#nodejs</span> </footer> </article><article id="2024-07-26T0820"> <h1> <a href="#2024-07-26T0820">JavaScript - Capture screenshots of websites </a> </h1> <p>方法：</p>
+    </div> </article><article id="2024-07-26T0820"> <header> <time datetime="">2024-07-26</time> <span>#javascript</span> </header> <h1> <a href="#2024-07-26T0820">JavaScript - Capture screenshots of websites </a> </h1> <p>方法：</p>
 <p>使用 <a href="https://github.com/sindresorhus/capture-website" target="_blank">https://github.com/sindresorhus/capture-website</a></p>
 <p>安装：</p>
 
@@ -174,7 +175,7 @@ Prevent Horizontal Scroll on Smaller Devices</p>
 <span class="line"><span style="color:#C586C0">await</span><span style="color:#9CDCFE"> captureWebsite</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">file</span><span style="color:#D4D4D4">(</span><span style="color:#CE9178">"https://www.example.com/"</span><span style="color:#D4D4D4">, </span><span style="color:#CE9178">"example.png"</span><span style="color:#D4D4D4">);</span></span></code></pre>
 
     </div><p>Here, we take a screenshot for <a href="https://www.example.com/" target="_blank">https://www.example.com/</a> , and save it to <code>example.png</code> file.</p>
- <footer> <time datetime="">2024-07-26</time> <span>#javascript</span> </footer> </article><article id="2024-07-25T0810"> <h1> <a href="#2024-07-25T0810">Astro - Cache Data Requests</a> </h1> <h2>Source</h2>
+ </article><article id="2024-07-25T0810"> <header> <time datetime="">2024-07-25</time> <span>#astro</span> </header> <h1> <a href="#2024-07-25T0810">Astro - Cache Data Requests</a> </h1> <h2>Source</h2>
 <p><a href="https://duffn.dev/caching-astro-fetch-requests/" target="_blank">https://duffn.dev/caching-astro-fetch-requests/</a></p>
 <p>If you're looking to cache your requests to avoid hitting that API too frequently when developing locally, just use <code>eleventy-fetch</code>. Yes, even with Astro!</p>
 <p>1）Add <code>eleventy-fetch</code> as a dependency</p>
@@ -211,7 +212,7 @@ Prevent Horizontal Scroll on Smaller Devices</p>
 <p><a href="https://github.com/11ty/eleventy-fetch" target="_blank">https://github.com/11ty/eleventy-fetch</a></p>
 <p>Fetch network resources and cache them so you don’t bombard your API (or other resources). (bombard / 轰炸)</p>
 <p>This plugin can save any kind of asset—JSON, HTML, images, videos, etc.</p>
- <footer> <time datetime="">2024-07-25</time> <span>#astro</span> </footer> </article><article id="2024-07-25T0820"> <h1> <a href="#2024-07-25T0820">Web  API - URL API</a> </h1> 
+ </article><article id="2024-07-25T0820"> <header> <time datetime="">2024-07-25</time> <span>#webapi</span> </header> <h1> <a href="#2024-07-25T0820">Web  API - URL API</a> </h1> 
     <div class="code-block__wrapper language-js">
       <div class="code-block__header">
         <span class="lang">js</span>
@@ -296,7 +297,7 @@ Prevent Horizontal Scroll on Smaller Devices</p>
 <span class="line"><span style="color:#D4D4D4">​</span></span>
 <span class="line"><span style="color:#C8C8C8">username</span><span style="color:#D4D4D4">: </span><span style="color:#CE9178">""</span></span></code></pre>
 
-    </div> <footer> <time datetime="">2024-07-25</time> <span>#webapi</span> </footer> </article><article id="2024-07-25T0830"> <h1> <a href="#2024-07-25T0830">Web API - DOM - `DOMContentLoaded` event</a> </h1> <h2>Source</h2>
+    </div> </article><article id="2024-07-25T0830"> <header> <time datetime="">2024-07-25</time> <span>#webapi</span> </header> <h1> <a href="#2024-07-25T0830">Web API - DOM - `DOMContentLoaded` event</a> </h1> <h2>Source</h2>
 <p>ChatGPT:</p>
 <p>Here are some key points about the <code>DOMContentLoaded</code> event:</p>
 <ul>
@@ -317,7 +318,7 @@ Prevent Horizontal Scroll on Smaller Devices</p>
 </ul>
 </li>
 </ul>
- <footer> <time datetime="">2024-07-25</time> <span>#webapi</span> </footer> </article><article id="2024-07-24T0800"> <h1> <a href="#2024-07-24T0800">11ty - Fetch data, Provide data, Consume data</a> </h1> <h2>Example 01</h2>
+ </article><article id="2024-07-24T0800"> <header> <time datetime="">2024-07-24</time> <span>#11ty</span> </header> <h1> <a href="#2024-07-24T0800">11ty - Fetch data, Provide data, Consume data</a> </h1> <h2>Example 01</h2>
 <p>Let use the Random User Generator API to fetch an random user and render it.</p>
 <p>1）Fetch and provide data:</p>
 
@@ -423,7 +424,7 @@ Prevent Horizontal Scroll on Smaller Devices</p>
 <ul>
 <li><code>@11ty/eleventy-fetch</code> plugin</li>
 </ul>
- <footer> <time datetime="">2024-07-24</time> <span>#11ty</span> </footer> </article><article id="2024-07-24T0810"> <h1> <a href="#2024-07-24T0810">Nunjucks - if, if else</a> </h1> <h2>Example 01 - if</h2>
+ </article><article id="2024-07-24T0810"> <header> <time datetime="">2024-07-24</time> <span>#nunjucks</span> </header> <h1> <a href="#2024-07-24T0810">Nunjucks - if, if else</a> </h1> <h2>Example 01 - if</h2>
 
     <div class="code-block__wrapper language-html">
       <div class="code-block__header">
@@ -455,7 +456,7 @@ Prevent Horizontal Scroll on Smaller Devices</p>
 
     </div><h2>Source</h2>
 <p><a href="https://mozilla.github.io/nunjucks/templating.html#if" target="_blank">https://mozilla.github.io/nunjucks/templating.html#if</a></p>
- <footer> <time datetime="">2024-07-24</time> <span>#nunjucks</span> </footer> </article><article id="2024-07-23T0800"> <h1> <a href="#2024-07-23T0800">Astro - styles do not work with `set:html`</a> </h1> <h2>Problem:</h2>
+ </article><article id="2024-07-23T0800"> <header> <time datetime="">2024-07-23</time> <span>#astro</span> </header> <h1> <a href="#2024-07-23T0800">Astro - styles do not work with `set:html`</a> </h1> <h2>Problem:</h2>
 <p>举个例子：</p>
 
     <div class="code-block__wrapper language-astro">
@@ -513,13 +514,13 @@ Prevent Horizontal Scroll on Smaller Devices</p>
 <ul>
 <li>You can opt-out of automatic CSS scoping with the <code>&lt;style is:global&gt;</code> attribute.</li>
 </ul>
- <footer> <time datetime="">2024-07-23</time> <span>#astro</span> </footer> </article><article id="2024-07-23T0810"> <h1> <a href="#2024-07-23T0810">Astro - fetch remote data</a> </h1> <h2>Source:</h2>
+ </article><article id="2024-07-23T0810"> <header> <time datetime="">2024-07-23</time> <span>#astro</span> </header> <h1> <a href="#2024-07-23T0810">Astro - fetch remote data</a> </h1> <h2>Source:</h2>
 <p><a href="https://docs.astro.build/en/guides/data-fetching/" target="_blank">https://docs.astro.build/en/guides/data-fetching/</a></p>
 <ul>
 <li>Remember, all data in Astro components is <strong>fetched when a component is rendered</strong>.</li>
 <li>In dev, you will see data <strong>fetches on component refreshes</strong>.</li>
 </ul>
- <footer> <time datetime="">2024-07-23</time> <span>#astro</span> </footer> </article><article id="2024-07-23T0820"> <h1> <a href="#2024-07-23T0820">Astro - Add interactivity to your Astro components</a> </h1> <h2>Example:</h2>
+ </article><article id="2024-07-23T0820"> <header> <time datetime="">2024-07-23</time> <span>#astro</span> </header> <h1> <a href="#2024-07-23T0820">Astro - Add interactivity to your Astro components</a> </h1> <h2>Example:</h2>
 
     <div class="code-block__wrapper language-astro">
       <div class="code-block__header">
@@ -537,7 +538,7 @@ Prevent Horizontal Scroll on Smaller Devices</p>
 <li>In <code>.astro</code> files, you can add client-side JavaScript by adding one (or more) <code>&lt;script&gt;</code> tags.</li>
 <li>This allows you to send JavaScript to run in the browser and add functionality to your Astro components.</li>
 </ul>
- <footer> <time datetime="">2024-07-23</time> <span>#astro</span> </footer> </article><article id="2024-07-23T0830"> <h1> <a href="#2024-07-23T0830">Airtable API</a> </h1> <h2>Auth</h2>
+ </article><article id="2024-07-23T0830"> <header> <time datetime="">2024-07-23</time> <span>#airtable</span> </header> <h1> <a href="#2024-07-23T0830">Airtable API</a> </h1> <h2>Auth</h2>
 <p>前往 <a href="https://airtable.com/create/tokens" target="_blank">https://airtable.com/create/tokens</a> 创建密钥，比如 Personal access token。</p>
 <h2>List records in a table</h2>
 <p>接口：</p>
@@ -579,7 +580,7 @@ Prevent Horizontal Scroll on Smaller Devices</p>
 <ul>
 <li>Create Personal access token</li>
 </ul>
- <footer> <time datetime="">2024-07-23</time> <span>#airtable</span> </footer> </article><article id="2024-07-22T0800"> <h1> <a href="#2024-07-22T0800">Git Ignoring Tracked Files</a> </h1> <p>假设你的项目里有一个 <code>src/somedir</code> 目录，这个目录 were previously tracked by Git。现在你想让 Git 不再 track 这个目录了，你可以使用这个命令：</p>
+ </article><article id="2024-07-22T0800"> <header> <time datetime="">2024-07-22</time> <span>#git</span> </header> <h1> <a href="#2024-07-22T0800">Git Ignoring Tracked Files</a> </h1> <p>假设你的项目里有一个 <code>src/somedir</code> 目录，这个目录 were previously tracked by Git。现在你想让 Git 不再 track 这个目录了，你可以使用这个命令：</p>
 
     <div class="code-block__wrapper language-bash">
       <div class="code-block__header">
@@ -594,7 +595,7 @@ Prevent Horizontal Scroll on Smaller Devices</p>
 </ul>
 <p>完成上面这步后，再将 <code>src/somedir/</code> 加到 <code>.gitignore</code> 里就大功告成了。</p>
 <p>source: ChatGPT</p>
- <footer> <time datetime="">2024-07-22</time> <span>#git</span> </footer> </article><article id="2024-07-22T0810"> <h1> <a href="#2024-07-22T0810">11ty - get the raw file content of collection items</a> </h1> <h2>Example:</h2>
+ </article><article id="2024-07-22T0810"> <header> <time datetime="">2024-07-22</time> <span>#11ty</span> </header> <h1> <a href="#2024-07-22T0810">11ty - get the raw file content of collection items</a> </h1> <h2>Example:</h2>
 
     <div class="code-block__wrapper language-js">
       <div class="code-block__header">
@@ -627,7 +628,7 @@ Prevent Horizontal Scroll on Smaller Devices</p>
 <li>using <code>item.template.frontMatter.content</code> in a collection, to extract hashtags as tags:</li>
 <li><code>let tags = hashtagsToTags(note.template.frontMatter.content);</code></li>
 </ul>
- <footer> <time datetime="">2024-07-22</time> <span>#11ty</span> </footer> </article><article id="2024-07-22T0820"> <h1> <a href="#2024-07-22T0820">11ty - addPassthroughCopy()</a> </h1> <h2>Example:</h2>
+ </article><article id="2024-07-22T0820"> <header> <time datetime="">2024-07-22</time> <span>#11ty</span> </header> <h1> <a href="#2024-07-22T0820">11ty - addPassthroughCopy()</a> </h1> <h2>Example:</h2>
 
     <div class="code-block__wrapper language-js">
       <div class="code-block__header">
@@ -650,7 +651,7 @@ Prevent Horizontal Scroll on Smaller Devices</p>
 
     </div><h2>Source:</h2>
 <p><a href="https://www.11ty.dev/docs/copy/#change-the-output-directory" target="_blank">https://www.11ty.dev/docs/copy/#change-the-output-directory</a></p>
- <footer> <time datetime="">2024-07-22</time> <span>#11ty</span> </footer> </article><article id="2024-07-16T0800"> <h1> <a href="#2024-07-16T0800">Git add submodule</a> </h1> 
+ </article><article id="2024-07-16T0800"> <header> <time datetime="">2024-07-16</time> <span>#git</span> </header> <h1> <a href="#2024-07-16T0800">Git add submodule</a> </h1> 
     <div class="code-block__wrapper language-bash">
       <div class="code-block__header">
         <span class="lang">bash</span>
@@ -694,7 +695,7 @@ Prevent Horizontal Scroll on Smaller Devices</p>
 <span class="line"><span>	url = https://github.com/jiminpublic/lab-content</span></span>
 <span class="line"><span>	active = true</span></span></code></pre>
 
-    </div> <footer> <time datetime="">2024-07-16</time> <span>#git</span> </footer> </article><article id="2024-07-16T0810"> <h1> <a href="#2024-07-16T0810">11ty fix the problem that css style does not work</a> </h1> <h2>Problem</h2>
+    </div> </article><article id="2024-07-16T0810"> <header> <time datetime="">2024-07-16</time> <span>#11ty</span> </header> <h1> <a href="#2024-07-16T0810">11ty fix the problem that css style does not work</a> </h1> <h2>Problem</h2>
 <p>我遇到的问题是：我在本地上运行时，样式还好好地，但是将网站部署到 Github Page 之后，写在样式表里的样式却一一失效了。</p>
 <p>我很快意识到这个问题可能跟样式表的链接有关，打开控制台一看，果然：</p>
 
@@ -760,11 +761,11 @@ Prevent Horizontal Scroll on Smaller Devices</p>
 </ul>
 </li>
 </ul>
- <footer> <time datetime="">2024-07-16</time> <span>#11ty</span> </footer> </article><article id="2024-07-16T0820"> <h1> <a href="#2024-07-16T0820">Deploy an 11ty project to Github pages</a> </h1> <p>source:</p>
+ </article><article id="2024-07-16T0820"> <header> <time datetime="">2024-07-16</time> <span>#11ty</span> </header> <h1> <a href="#2024-07-16T0820">Deploy an 11ty project to Github pages</a> </h1> <p>source:</p>
 <ul>
 <li><a href="https://www.11ty.dev/docs/deployment/#deploy-an-eleventy-project-to-github-pages" target="_blank">https://www.11ty.dev/docs/deployment/#deploy-an-eleventy-project-to-github-pages</a> - 借助 Github Actions</li>
 </ul>
- <footer> <time datetime="">2024-07-16</time> <span>#11ty</span> </footer> </article><article id="2024-07-12T2000"> <h1> <a href="#2024-07-12T2000">Astro render markdown to html</a> </h1> <p>1）</p>
+ </article><article id="2024-07-12T2000"> <header> <time datetime="">2024-07-12</time> <span>#astro</span> </header> <h1> <a href="#2024-07-12T2000">Astro render markdown to html</a> </h1> <p>1）</p>
 
     <div class="code-block__wrapper language-astro">
       <div class="code-block__header">
@@ -799,7 +800,7 @@ Prevent Horizontal Scroll on Smaller Devices</p>
 <span class="line"><span style="color:#808080">&#x3C;</span><span style="color:#4EC9B0">Fragment</span><span style="color:#9CDCFE"> set:html</span><span style="color:#D4D4D4">=</span><span style="color:#569CD6">{</span><span style="color:#9CDCFE">content</span><span style="color:#569CD6">}</span><span style="color:#808080"> /></span></span></code></pre>
 
     </div><p>source: <a href="https://docs.astro.build/en/basics/astro-syntax/#fragments" target="_blank">https://docs.astro.build/en/basics/astro-syntax/#fragments</a></p>
- <footer> <time datetime="">2024-07-12</time> <span>#astro</span> </footer> </article><article id="2024-07-12T2010"> <h1> <a href="#2024-07-12T2010">JavaScript slugify a string</a> </h1> <p>Using <code>@sindresorhus/slugify</code> to slugify a string in JavaScript:</p>
+ </article><article id="2024-07-12T2010"> <header> <time datetime="">2024-07-12</time> <span>#javascript</span> </header> <h1> <a href="#2024-07-12T2010">JavaScript slugify a string</a> </h1> <p>Using <code>@sindresorhus/slugify</code> to slugify a string in JavaScript:</p>
 
     <div class="code-block__wrapper language-js">
       <div class="code-block__header">
@@ -811,7 +812,7 @@ Prevent Horizontal Scroll on Smaller Devices</p>
 <span class="line"><span style="color:#6A9955">//=> 'bar-and-baz'</span></span></code></pre>
 
     </div><p>source: <a href="https://github.com/sindresorhus/slugify" target="_blank">https://github.com/sindresorhus/slugify</a></p>
- <footer> <time datetime="">2024-07-12</time> <span>#javascript</span> </footer> </article><article id="2024-07-12T2020"> <h1> <a href="#2024-07-12T2020">JavaScript check whether or not a pattern exists in a searched string</a> </h1> <p>To do this, we can use the <code>test()</code> method of <code>RegExp</code> instances.</p>
+ </article><article id="2024-07-12T2020"> <header> <time datetime="">2024-07-12</time> <span>#javascript</span> </header> <h1> <a href="#2024-07-12T2020">JavaScript check whether or not a pattern exists in a searched string</a> </h1> <p>To do this, we can use the <code>test()</code> method of <code>RegExp</code> instances.</p>
 <p>Example #1 - Check if there are hashtags in the given string:</p>
 
     <div class="code-block__wrapper language-js">
@@ -834,7 +835,7 @@ Prevent Horizontal Scroll on Smaller Devices</p>
 <span class="line"><span style="color:#9CDCFE">console</span><span style="color:#D4D4D4">.</span><span style="color:#DCDCAA">log</span><span style="color:#D4D4D4">(</span><span style="color:#9CDCFE">result</span><span style="color:#D4D4D4">); </span><span style="color:#6A9955">// true</span></span></code></pre>
 
     </div><p>source: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test" target="_blank">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test</a></p>
- <footer> <time datetime="">2024-07-12</time> <span>#javascript</span> </footer> </article><article id="2024-07-12T2030"> <h1> <a href="#2024-07-12T2030">JavaScript removes elements from an array</a> </h1> <p>To do this, we can use the <code>splice()</code> method of <code>Array</code> instances.</p>
+ </article><article id="2024-07-12T2030"> <header> <time datetime="">2024-07-12</time> <span>#javascript</span> </header> <h1> <a href="#2024-07-12T2030">JavaScript removes elements from an array</a> </h1> <p>To do this, we can use the <code>splice()</code> method of <code>Array</code> instances.</p>
 <p>Example #1 - Remove 1 element at index 3:</p>
 
     <div class="code-block__wrapper language-js">
@@ -860,7 +861,7 @@ Prevent Horizontal Scroll on Smaller Devices</p>
 <span class="line"><span style="color:#6A9955">// removed is ["blue", "trumpet"]</span></span></code></pre>
 
     </div><p>source: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice" target="_blank">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice</a></p>
- <footer> <time datetime="">2024-07-12</time> <span>#javascript</span> </footer> </article><article id="2024-07-04T0930"> <h1> <a href="#2024-07-04T0930">Git reset last commit</a> </h1> <p>1）要撤销上一次提交的更改，可以使用以下 Git 命令：</p>
+ </article><article id="2024-07-04T0930"> <header> <time datetime="">2024-07-04</time> <span>#git</span> </header> <h1> <a href="#2024-07-04T0930">Git reset last commit</a> </h1> <p>1）要撤销上一次提交的更改，可以使用以下 Git 命令：</p>
 
     <div class="code-block__wrapper language-bash">
       <div class="code-block__header">
@@ -878,7 +879,7 @@ Prevent Horizontal Scroll on Smaller Devices</p>
       <pre class="shiki dark-plus" style="background-color:#1E1E1E;color:#D4D4D4" tabindex="0"><code class="language-bash"><span class="line"><span style="color:#DCDCAA">git</span><span style="color:#CE9178"> reset</span><span style="color:#569CD6"> --hard</span><span style="color:#CE9178"> HEAD~1</span></span></code></pre>
 
     </div><p>这会将 <code>HEAD</code> 移动到上一次的 commit，并会丢弃工作目录中的所有更改。也就是说，回退到了上一次 commit 时的状态。</p>
- <footer> <time datetime="">2024-07-04</time> <span>#git</span> </footer> </article><article id="2024-06-23T0930"> <h1> <a href="#2024-06-23T0930">HTML native dialog</a> </h1> <h2>render a dialog</h2>
+ </article><article id="2024-06-23T0930"> <header> <time datetime="">2024-06-23</time> <span>#html</span> </header> <h1> <a href="#2024-06-23T0930">HTML native dialog</a> </h1> <h2>render a dialog</h2>
 
     <div class="code-block__wrapper language-html">
       <div class="code-block__header">
@@ -945,12 +946,12 @@ Prevent Horizontal Scroll on Smaller Devices</p>
 
     </div><p>但一旦你自己给 dialog 元素的 <code>display</code> CSS 属性做了设置，就会破坏这个行为。对这个的解决方法就是不要直接在 dialog 元素上应用任何 <code>display</code>，而是将 dialog content 再 wrap 一层，把你要的 display 应用在这个 dialog content wrapper 上。</p>
 <p>source: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog" target="_blank">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog</a></p>
- <footer> <time datetime="">2024-06-23</time> <span>#html</span> </footer> </article><article id="2024-06-23T0940"> <h1> <a href="#2024-06-23T0940">JavaScript reload webpage</a> </h1> <p>The <strong><code>reload()</code></strong> method of the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Location" target="_blank"><code>Location</code></a> interface reloads the current URL, <strong>like the Refresh button</strong>.</p>
+ </article><article id="2024-06-23T0940"> <header> <time datetime="">2024-06-23</time> <span>#javascript</span> </header> <h1> <a href="#2024-06-23T0940">JavaScript reload webpage</a> </h1> <p>The <strong><code>reload()</code></strong> method of the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Location" target="_blank"><code>Location</code></a> interface reloads the current URL, <strong>like the Refresh button</strong>.</p>
 <p>source: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Location/reload" target="_blank">https://developer.mozilla.org/en-US/docs/Web/API/Location/reload</a></p>
- <footer> <time datetime="">2024-06-23</time> <span>#javascript</span> </footer> </article><article id="2024-06-23T0950"> <h1> <a href="#2024-06-23T0950">deploy plain html to Github Page</a> </h1> <ol>
+ </article><article id="2024-06-23T0950"> <header> <time datetime="">2024-06-23</time> <span>#github</span> </header> <h1> <a href="#2024-06-23T0950">deploy plain html to Github Page</a> </h1> <ol>
 <li>首先你的本地仓库先创建好，确保所有改动都 commit 了。</li>
 <li>然后在 Github 上创建一个仓库。</li>
 <li>然后回到你的本地仓库，与你的远程仓库做好连接，然后 push。</li>
 <li>最后回到你的远程仓库的 dashboard，打开 “setting → pages”，在 select  branch 那里将 None 改为你需要的分支，比如 main，目录选择如 root，最后点击保存，需要你做的工作就完成了。接下里等几分钟让 Github 部署好你的网站，之后你就可以访问了。</li>
 </ol>
- <footer> <time datetime="">2024-06-23</time> <span>#github</span> </footer> </article> </main>  </body></html> 
+ </article> </main>  </body></html>  
