@@ -1,0 +1,26 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="shortcut icon" href="#" type="image/x-icon"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>YE.LAB</title><style>.astro-code{padding:1rem;border-radius:4px}main{max-width:720px;margin-inline:auto}live-demo{display:block;border:1px solid gray;border-radius:4px;padding:1rem}
+</style><script type="module">class e extends HTMLElement{constructor(){super()}}customElements.define("live-demo",e);
+</script></head> <body>  <header> <h1>Web Development Tips</h1> </header>  <main> <article> <h2 id="css-disaplay-hidden-elment-on-hover">CSS Disaplay Hidden Elment on Hover</h2>
+<pre class="astro-code dark-plus" style="background-color:#1E1E1E;color:#D4D4D4; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#D7BA7D">.css-display-hidden-element-on-hover</span><span style="color:#D4D4D4"> {</span></span>
+<span class="line"><span style="color:#9CDCFE">  opacity</span><span style="color:#D4D4D4">: </span><span style="color:#B5CEA8">0</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D4D4D4">  &#x26;:hover {</span></span>
+<span class="line"><span style="color:#D4D4D4">    opacity: </span><span style="color:#B5CEA8">100</span><span style="color:#D4D4D4">;</span></span>
+<span class="line"><span style="color:#D4D4D4">  }</span></span>
+<span class="line"><span style="color:#D4D4D4">}</span></span>
+<span class="line"></span></code></pre>
+<live-demo>
+  <div class="css-display-hidden-element-on-hover"></div>
+  <style>
+    .css-display-hidden-element-on-hover {
+      opacity: 0;
+      &:hover {
+        opacity: 100;
+      }
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      margin: auto;
+    }
+  </style>
+</live-demo> </article> </main>  </body></html>  
